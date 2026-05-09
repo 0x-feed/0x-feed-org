@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>0xFEED // AI News</title>
+  <meta name="description" content="AI news: frontier lab releases, federal AI policy, AI in education, certifications, and 9-12 competitions.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="pulse" aria-hidden="true"></span>
+    <span class="ox">0x</span><span class="feed">FEED</span>
+  </div>
+  <div class="status" role="status" aria-live="polite">
+    <span><span class="dot" id="feed-status-dot"></span><b>FEEDS:</b>&nbsp;<span id="feed-status">initializing</span></span>
+    <span><b>LAST:</b>&nbsp;<span id="last-updated">—</span></span>
+    <span id="search-count" style="color:var(--green)"></span>
+  </div>
+  <div class="search">
+    <span aria-hidden="true">⌕</span>
+    <input id="q" type="search" placeholder="search this page" aria-label="Search">
+    <span class="key">/</span>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="titles">
+    <p class="eyebrow">// 02 · AI NEWS</p>
+    <h1>AI<span class="gn">.</span>News</h1>
+    <p>Frontier-lab updates, federal policy, AI in education, AI certs, and 9-12 competitions. Sources linked.</p>
+  </div>
+  <a class="backbtn" href="cyber.html"><span class="ar">←</span> dashboard</a>
+</section>
+
+<nav class="cell flush span12" style="border-bottom:1px solid var(--line)">
+  <div style="display:flex;gap:0;flex-wrap:wrap;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase">
+    <a href="#products"     style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">a · product updates</a>
+    <a href="#gov"          style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">b · u.s. gov</a>
+    <a href="#education"    style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">c · ai in ed</a>
+    <a href="#certs"        style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">d · certs</a>
+    <a href="#competitions" style="padding:14px 18px;color:var(--ink-2)">e · 9-12 competitions</a>
+  </div>
+</nav>
+
+<main>
+
+  <section id="products" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// a · product updates · openai · anthropic · google · meta · microsoft · xai</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:18px">Direct from each lab's official feed.</p>
+      <div id="feed-products" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+  </section>
+
+  <section id="gov" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// b · u.s. government ai news</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:18px">NIST AI, White House OSTP.</p>
+      <div id="feed-gov" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+  </section>
+
+  <section id="education" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// c · ai in education</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:18px">EdSurge and EdWeek coverage tagged for AI in classrooms.</p>
+      <div id="feed-education" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+  </section>
+
+  <section id="certs" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// d · ai certs & credentials</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:18px">Coursera, DeepLearning.AI, plus official lab learning paths.</p>
+      <div id="feed-certs" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+  </section>
+
+  <section id="competitions" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// e · ai competitions for 9-12</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:18px">Kaggle, AI4ALL, plus seeded list of major student AI events.</p>
+      <div id="feed-competitions" class="feed-list" style="margin-bottom:24px"><div class="loader">fetching feeds</div></div>
+
+      <div class="lbl" style="margin-top:8px"><span>// notable 9-12 ai programs</span></div>
+      <div id="ai-comp-seed" class="feed-list"></div>
+    </div>
+  </section>
+
+</main>
+
+<p class="note">// sources linked on every article · 0xFEED is a content aggregator · all rights remain with original publishers</p>
+
+<script src="assets/feed.js"></script>
+<script>
+(async function init(){
+  OXFEED.bindSearch("q", ".art, .list-card");
+
+  // seeded AI student programs (high signal, stable)
+  const AI_PROGRAMS = [
+    { name:"Kaggle Competitions",   org:"Google / Kaggle",        grades:"open · HS welcome", url:"https://www.kaggle.com/competitions", desc:"Live data-science competitions with cash prizes. Beginner tier (Getting Started) is age-friendly and free." },
+    { name:"AI4ALL",                org:"AI4ALL nonprofit",        grades:"9-12",             url:"https://ai-4-all.org",                 desc:"Summer programs at top universities to broaden access to AI for high schoolers from underrepresented groups." },
+    { name:"Congressional App Challenge", org:"US House of Reps",  grades:"6-12",             url:"https://www.congressionalappchallenge.us", desc:"District-level coding competition. AI/ML projects increasingly dominate winners." },
+    { name:"MIT THINK Scholars",    org:"MIT",                     grades:"9-12",             url:"https://think.mit.edu",                desc:"Research-based STEM competition. AI projects regularly selected for funding and mentorship." },
+    { name:"NeurIPS High School Track", org:"NeurIPS Conference",  grades:"9-12",             url:"https://neurips.cc",                   desc:"High-school research paper track at the world's premier ML conference. New in recent years." },
+    { name:"Math + AI Olympiad",    org:"AIMO Prize / Kaggle",     grades:"open",             url:"https://www.kaggle.com/competitions/ai-mathematical-olympiad-prize", desc:"\$10M challenge for AI systems solving olympiad math. Educational tier accessible to students." },
+    { name:"Hack the Future",       org:"Various K-12 hackathons", grades:"6-12",             url:"https://hackclub.com",                 desc:"Hack Club hosts dozens of student hackathons each year, many AI-themed." },
+    { name:"FIRST Tech Challenge AI", org:"FIRST Robotics",        grades:"7-12",             url:"https://www.firstinspires.org/robotics/ftc", desc:"Robotics competition with growing emphasis on computer-vision and ML-based autonomy." }
+  ];
+
+  document.getElementById("ai-comp-seed").innerHTML = AI_PROGRAMS.map((c, i) => `
+    <a class="list-card" href="${OXFEED.escapeHtml(c.url)}" target="_blank" rel="noopener noreferrer">
+      <div class="idx">${String(i+1).padStart(2,"0")}</div>
+      <div>
+        <h4>${OXFEED.escapeHtml(c.name)}</h4>
+        <div class="meta"><span class="tier">${OXFEED.escapeHtml(c.org)}</span><span>${OXFEED.escapeHtml(c.grades)}</span></div>
+        <p>${OXFEED.escapeHtml(c.desc)}</p>
+      </div>
+      <span class="visit">visit →</span>
+    </a>`).join("");
+
+  const tasks = [
+    ["ai_products",     "feed-products",      10],
+    ["ai_gov",          "feed-gov",            8],
+    ["ai_education",    "feed-education",      8],
+    ["ai_certs",        "feed-certs",          8],
+    ["ai_competitions", "feed-competitions",   8]
+  ];
+  let okCount = 0;
+  for (const [cat, elId, cap] of tasks) {
+    const items = await OXFEED.fetchCategory(cat, 5);
+    const el = document.getElementById(elId);
+    if (items.length) {
+      el.innerHTML = items.slice(0, cap).map(OXFEED.renderArticleRow).join("");
+      okCount++;
+    } else {
+      el.innerHTML = '<div class="empty">no items. feed offline or filtered.</div>';
+    }
+  }
+
+  document.getElementById("feed-status").textContent = `${okCount}/${tasks.length} OK`;
+  document.getElementById("feed-status-dot").classList.toggle("err", okCount === 0);
+  OXFEED.setUpdated("last-updated");
+})();
+</script>
+
+</body>
+</html>

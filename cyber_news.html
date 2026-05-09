@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>0xFEED // Cyber News</title>
+  <meta name="description" content="Cybersecurity news: breaches, federal advisories, markets, certifications, K-12 education, and competitions.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="pulse" aria-hidden="true"></span>
+    <span class="ox">0x</span><span class="feed">FEED</span>
+  </div>
+  <div class="status" role="status" aria-live="polite">
+    <span><span class="dot" id="feed-status-dot"></span><b>FEEDS:</b>&nbsp;<span id="feed-status">initializing</span></span>
+    <span><b>LAST:</b>&nbsp;<span id="last-updated">—</span></span>
+    <span id="search-count" style="color:var(--green)"></span>
+  </div>
+  <div class="search">
+    <span aria-hidden="true">⌕</span>
+    <input id="q" type="search" placeholder="search this page" aria-label="Search">
+    <span class="key">/</span>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="titles">
+    <p class="eyebrow">// 01 · CYBER NEWS</p>
+    <h1>Cyber<span class="gn">.</span>News</h1>
+    <p>Breaches, advisories, markets, certs, K-12, and competitions. Sources linked. Auto-updated.</p>
+  </div>
+  <a class="backbtn" href="cyber.html"><span class="ar">←</span> dashboard</a>
+</section>
+
+<nav class="cell flush span12" style="border-bottom:1px solid var(--line)">
+  <div style="display:flex;gap:0;flex-wrap:wrap;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase">
+    <a href="#breaches"     style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">a · breaches</a>
+    <a href="#gov"          style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">b · u.s. gov</a>
+    <a href="#markets"      style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">c · markets</a>
+    <a href="#certs"        style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">d · certs</a>
+    <a href="#k12"          style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">e · k-12 ed</a>
+    <a href="#competitions" style="padding:14px 18px;color:var(--ink-2)">f · competitions</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- A: Breaches -->
+  <section id="breaches" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// a · latest breaches, hacks, cyber attacks</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:18px">Krebs, BleepingComputer, The Hacker News, Dark Reading, SecurityWeek.</p>
+      <div id="feed-breaches" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+  </section>
+
+  <!-- B: Gov -->
+  <section id="gov" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// b · u.s. government cyber news</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:18px">CISA advisories, US-CERT alerts, FBI IC3.</p>
+      <div id="feed-gov" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+  </section>
+
+  <!-- C: Markets -->
+  <section id="markets" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// c · stock market & financial · cyber sector</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:14px">CRWD, PANW, ZS, FTNT, S, OKTA, CYBR, NET. Quotes from stooq.com, news from Reuters and Yahoo Finance.</p>
+
+      <div id="tickers" class="tickers" style="margin:8px 0 22px;border:1px solid var(--line);border-radius:3px">
+        <div class="loader">loading quotes</div>
+      </div>
+
+      <div id="feed-markets" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+  </section>
+
+  <!-- D: Certs -->
+  <section id="certs" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// d · industry-recognized credentials</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:18px">ISC2, CompTIA, EC-Council, SANS.</p>
+      <div id="feed-certs" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+  </section>
+
+  <!-- E: K-12 ed -->
+  <section id="k12" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// e · k-12 cybersecurity education</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:18px">Education Week, K12 Dive, EdSurge.</p>
+      <div id="feed-k12" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+  </section>
+
+  <!-- F: Competitions (live feed + seeded list) -->
+  <section id="competitions" class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// f · k-12 cyber competitions</span><span class="live">LIVE</span></div>
+      <p class="section-sub" style="margin-bottom:18px">News from CyberPatriot, picoCTF, NCL plus the top 10 US student competitions.</p>
+      <div id="feed-competitions" class="feed-list" style="margin-bottom:24px"><div class="loader">fetching feeds</div></div>
+
+      <div class="lbl" style="margin-top:8px"><span>// top 10 us student competitions</span></div>
+      <div id="comp-seed" class="feed-list"></div>
+    </div>
+  </section>
+
+</main>
+
+<p class="note">// sources linked on every article · 0xFEED is a content aggregator · all rights remain with original publishers</p>
+
+<script src="assets/feed.js"></script>
+<script>
+(async function init(){
+  OXFEED.bindSearch("q", ".art, .list-card");
+
+  // tickers
+  const TICKERS = ["CRWD","PANW","ZS","FTNT","S","OKTA","CYBR","NET"];
+  const tk = await OXFEED.fetchTickers(TICKERS);
+  const tkEl = document.getElementById("tickers");
+  tkEl.innerHTML = tk.length ? tk.map(OXFEED.renderTicker).join("") : '<div class="empty" style="padding:18px">quotes unavailable</div>';
+
+  // seeded competitions list
+  const seedEl = document.getElementById("comp-seed");
+  seedEl.innerHTML = OXFEED.COMPETITIONS.map((c, i) => `
+    <a class="list-card" href="${OXFEED.escapeHtml(c.url)}" target="_blank" rel="noopener noreferrer">
+      <div class="idx">${String(i+1).padStart(2,"0")}</div>
+      <div>
+        <h4>${OXFEED.escapeHtml(c.name)}</h4>
+        <div class="meta"><span class="tier">${OXFEED.escapeHtml(c.org)}</span><span>${OXFEED.escapeHtml(c.grades)}</span></div>
+        <p>${OXFEED.escapeHtml(c.desc)}</p>
+      </div>
+      <span class="visit">visit →</span>
+    </a>`).join("");
+
+  // feeds
+  const tasks = [
+    ["breaches",          "feed-breaches",     8],
+    ["cyber_gov",         "feed-gov",          8],
+    ["cyber_market",      "feed-markets",      8],
+    ["cyber_certs",       "feed-certs",        8],
+    ["cyber_k12",         "feed-k12",          8],
+    ["cyber_competitions","feed-competitions", 8]
+  ];
+  let okCount = 0;
+  for (const [cat, elId, cap] of tasks) {
+    const items = await OXFEED.fetchCategory(cat, 5);
+    const el = document.getElementById(elId);
+    if (items.length) {
+      el.innerHTML = items.slice(0, cap).map(OXFEED.renderArticleRow).join("");
+      okCount++;
+    } else {
+      el.innerHTML = '<div class="empty">no items. feed offline or filtered.</div>';
+    }
+  }
+
+  document.getElementById("feed-status").textContent = `${okCount}/${tasks.length} OK`;
+  document.getElementById("feed-status-dot").classList.toggle("err", okCount === 0);
+  OXFEED.setUpdated("last-updated");
+})();
+</script>
+
+</body>
+</html>

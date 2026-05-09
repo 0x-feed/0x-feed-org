@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>0xFEED // Cyber in Education</title>
+  <meta name="description" content="Top 20 free and low-cost online cybersecurity learning paths. Curated for high-school and entry-level study.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="pulse" aria-hidden="true"></span>
+    <span class="ox">0x</span><span class="feed">FEED</span>
+  </div>
+  <div class="status" role="status" aria-live="polite">
+    <span><b>CURATED:</b>&nbsp;<span id="count">20</span> paths</span>
+    <span><b>UPDATED:</b>&nbsp;<span id="last-updated">—</span></span>
+    <span id="search-count" style="color:var(--green)"></span>
+  </div>
+  <div class="search">
+    <span aria-hidden="true">⌕</span>
+    <input id="q" type="search" placeholder="search paths" aria-label="Search">
+    <span class="key">/</span>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="titles">
+    <p class="eyebrow">// 03 · CYBER IN EDUCATION</p>
+    <h1>Cyber<span class="gn">.</span>Edu</h1>
+    <p>20 hand-curated free and low-cost online learning paths. Vetted for high-school students and entry-level adult learners. All links open the source.</p>
+  </div>
+  <a class="backbtn" href="cyber.html"><span class="ar">←</span> dashboard</a>
+</section>
+
+<main>
+
+  <section class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// the list · 20 paths · ranked by access + signal-to-noise</span></div>
+      <p class="section-sub" style="margin-bottom:22px">Free tiers and audit-only courses are clearly marked. "Low cost" means standalone purchase under \$50 (or under \$30/month subscription) at time of curation. Always check the source for current pricing.</p>
+      <div id="ed-list" class="feed-list"></div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// recommended starting order · for first-time learners</span></div>
+      <ol style="font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-2);line-height:1.85;padding-left:20px;margin:8px 0 0">
+        <li><b style="color:var(--ink)">Start fundamentals</b>: Professor Messer (Network+ → Security+) is the single best free study channel. Pair with SANS Cyber Aces.</li>
+        <li><b style="color:var(--ink)">Build hands-on</b>: TryHackMe's free pre-security path, then OverTheWire Bandit for the Linux command line.</li>
+        <li><b style="color:var(--ink)">Practice CTFs</b>: picoCTF Gym is the largest free archive. Solve old problems, watch writeups.</li>
+        <li><b style="color:var(--ink)">Specialize</b>: web → PortSwigger Academy. blue team → RangeForce Community. cloud → Microsoft Learn or AWS Skill Builder.</li>
+        <li><b style="color:var(--ink)">Earn a credential</b>: Security+ via Professor Messer + Cybrary. Optional: Google Cybersecurity Cert (Coursera, financial aid available).</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<p class="note">// curated list · last vetted on page load · all rights remain with original publishers</p>
+
+<script src="assets/feed.js"></script>
+<script>
+(function init(){
+  OXFEED.bindSearch("q", ".list-card");
+
+  const list = OXFEED.ED_SITES;
+  document.getElementById("count").textContent = list.length;
+
+  document.getElementById("ed-list").innerHTML = list.map((s, i) => `
+    <a class="list-card" href="${OXFEED.escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">
+      <div class="idx">${String(i+1).padStart(2,"0")}</div>
+      <div>
+        <h4>${OXFEED.escapeHtml(s.name)}</h4>
+        <div class="meta">
+          <span class="tier">${OXFEED.escapeHtml(s.tier)}</span>
+          ${(s.tags||[]).map(t => `<span>· ${OXFEED.escapeHtml(t)}</span>`).join("")}
+        </div>
+        <p>${OXFEED.escapeHtml(s.desc)}</p>
+      </div>
+      <span class="visit">visit →</span>
+    </a>`).join("");
+
+  OXFEED.setUpdated("last-updated");
+})();
+</script>
+
+</body>
+</html>

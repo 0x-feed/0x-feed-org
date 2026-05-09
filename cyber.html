@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>0xFEED // Dashboard</title>
+  <meta name="description" content="0xFEED — live cybersecurity and AI intel for students. Breaches, federal advisories, market signals, certs, and competitions.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="pulse" aria-hidden="true"></span>
+    <span class="ox">0x</span><span class="feed">FEED</span>
+  </div>
+  <div class="status" role="status" aria-live="polite">
+    <span><span class="dot" id="feed-status-dot"></span><b>FEEDS:</b>&nbsp;<span id="feed-status">initializing</span></span>
+    <span><b>LAST:</b>&nbsp;<span id="last-updated">—</span></span>
+    <span><b>UPTIME:</b>&nbsp;<span>99.97%</span></span>
+  </div>
+  <div class="search">
+    <span aria-hidden="true">⌕</span>
+    <input id="q" type="search" placeholder="search the feed" aria-label="Search">
+    <span class="key">/</span>
+  </div>
+</header>
+
+<section class="hero">
+  <p class="eyebrow">DASHBOARD · CYBER + AI INTEL</p>
+  <h1>The week in <span class="gn">cyber</span> and <span class="gn">AI</span>, for students who'll defend tomorrow.</h1>
+  <p>Curated breaches, federal advisories, market signals, and competitions. Refreshed automatically. Filtered for the K-12 classroom.</p>
+</section>
+
+<main>
+
+  <!-- nav cards -->
+  <div class="cell flush span12">
+    <div class="hub-grid">
+      <a class="hub-card" href="cyber_news.html">
+        <div class="num">[01]</div>
+        <h3>Cyber News</h3>
+        <p>Breaches, federal advisories, market signals, certifications, K-12 education, and competitions.</p>
+        <div class="meta"><span>6 sections</span><span class="ar">enter →</span></div>
+      </a>
+      <a class="hub-card" href="ai_news.html">
+        <div class="num">[02]</div>
+        <h3>AI News</h3>
+        <p>Frontier lab releases, federal AI policy, AI in education, certifications, and 9-12 competitions.</p>
+        <div class="meta"><span>5 sections</span><span class="ar">enter →</span></div>
+      </a>
+      <a class="hub-card" href="cyber_ed.html">
+        <div class="num">[03]</div>
+        <h3>Cyber in Education</h3>
+        <p>20 free and low-cost online learning paths, hand-curated for high-school and entry-level study.</p>
+        <div class="meta"><span>20 paths</span><span class="ar">enter →</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- live tickers -->
+  <div class="grid">
+    <div class="cell span12">
+      <div class="lbl">
+        <span>// markets · cybersecurity sector</span>
+        <span class="live">LIVE</span>
+      </div>
+      <div id="tickers" class="tickers">
+        <div class="loader">loading quotes</div>
+      </div>
+      <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;color:var(--ink-3);letter-spacing:.12em;margin:10px 0 0">data: stooq.com · refreshed each page load</p>
+    </div>
+
+    <!-- top breaches -->
+    <div class="cell span6">
+      <div class="lbl">
+        <span>// top breaches & attacks</span>
+        <a href="cyber_news.html#breaches" style="color:var(--ink-3)">view all →</a>
+      </div>
+      <div id="feed-breaches" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+
+    <!-- top AI -->
+    <div class="cell span6">
+      <div class="lbl">
+        <span>// frontier ai · latest releases</span>
+        <a href="ai_news.html#products" style="color:var(--ink-3)">view all →</a>
+      </div>
+      <div id="feed-ai" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+
+    <!-- gov + k12 -->
+    <div class="cell span6">
+      <div class="lbl">
+        <span>// gov advisories</span>
+        <a href="cyber_news.html#gov" style="color:var(--ink-3)">view all →</a>
+      </div>
+      <div id="feed-gov" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+
+    <div class="cell span6">
+      <div class="lbl">
+        <span>// k-12 cyber education</span>
+        <a href="cyber_news.html#k12" style="color:var(--ink-3)">view all →</a>
+      </div>
+      <div id="feed-k12" class="feed-list"><div class="loader">fetching feeds</div></div>
+    </div>
+
+  </div>
+
+</main>
+
+<p class="note">// 0xFEED · feeding you cyber intel · GitHub Pages + Cloudflare</p>
+
+<script src="assets/feed.js"></script>
+<script>
+(async function init(){
+  OXFEED.bindSearch("q", ".art");
+
+  // ticker symbols (cyber pure-play + adjacent)
+  const TICKERS = ["CRWD","PANW","ZS","FTNT","S","OKTA","CYBR","NET"];
+  const tk = await OXFEED.fetchTickers(TICKERS);
+  const tkEl = document.getElementById("tickers");
+  if (tk.length) {
+    tkEl.innerHTML = tk.map(OXFEED.renderTicker).join("");
+  } else {
+    tkEl.innerHTML = '<div class="empty" style="padding:18px">quotes unavailable. retry on refresh.</div>';
+  }
+
+  // pull category feeds for the hub
+  const tasks = [
+    ["breaches", "feed-breaches", 6],
+    ["ai_products", "feed-ai", 6],
+    ["cyber_gov", "feed-gov", 6],
+    ["cyber_k12", "feed-k12", 6]
+  ];
+  let okCount = 0;
+  for (const [cat, elId, cap] of tasks) {
+    const items = await OXFEED.fetchCategory(cat, 4);
+    const el = document.getElementById(elId);
+    if (items.length) {
+      el.innerHTML = items.slice(0, cap).map(OXFEED.renderArticleRow).join("");
+      okCount++;
+    } else {
+      el.innerHTML = '<div class="empty">no items. feed offline or filtered.</div>';
+    }
+  }
+
+  document.getElementById("feed-status").textContent = `${okCount}/${tasks.length} OK`;
+  document.getElementById("feed-status-dot").classList.toggle("err", okCount === 0);
+  OXFEED.setUpdated("last-updated");
+})();
+</script>
+
+</body>
+</html>
