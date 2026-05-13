@@ -1,6 +1,30 @@
+
 <!doctype html>
 <html lang="en">
-<head>
+<head><script data-od-sandbox-shim>(function(){
+  function makeStore(){
+    var data = {};
+    var api = {
+      getItem: function(k){ return Object.prototype.hasOwnProperty.call(data, k) ? data[k] : null; },
+      setItem: function(k, v){ data[k] = String(v); },
+      removeItem: function(k){ delete data[k]; },
+      clear: function(){ data = {}; },
+      key: function(i){ return Object.keys(data)[i] || null; }
+    };
+    Object.defineProperty(api, 'length', { get: function(){ return Object.keys(data).length; } });
+    return api;
+  }
+  function tryShim(name){
+    var works = false;
+    try { works = !!window[name] && typeof window[name].getItem === 'function'; void window[name].length; }
+    catch (_) { works = false; }
+    if (works) return;
+    try { Object.defineProperty(window, name, { configurable: true, value: makeStore() }); }
+    catch (_) { try { window[name] = makeStore(); } catch (__) {} }
+  }
+  tryShim('localStorage');
+  tryShim('sessionStorage');
+})();</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>0xFEED // Dashboard</title>
@@ -8,16 +32,144 @@
   <link rel="icon" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --nv-green:        #76b900;
+      --nv-green-bright: #95e30b;
+      --nv-green-soft:   rgba(118,185,0,.18);
+      --teal:            #1eaedb;
+      --bg:              #05070a;
+      --bg-2:            #0a0e14;
+      --panel:            #0e1218;
+      --panel-2:         #11161e;
+      --border:          #1a2230;
+      --border-bright:   #2a3a52;
+      --gray-3:          #a7a7a7;
+      --gray-4:          #6a7888;
+      --gray-5:          #485668;
+      --red:              #e52020;
+
+      --mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+      --display: "Space Grotesk", Arial, Helvetica, sans-serif;
+      
+      --ink-3: var(--gray-4);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; min-height: 100vh; background: var(--bg); color: #fff; font-family: var(--display); -webkit-font-smoothing: antialiased; }
+    
+    /* BACKGROUND & EFFECTS */
+    .bg-base { position: fixed; inset: 0; z-index: -2; background: radial-gradient(900px 600px at 18% 38%, rgba(118,185,0,.10), transparent 60%), radial-gradient(800px 600px at 88% 78%, rgba(30,174,219,.06), transparent 60%), linear-gradient(180deg, #04060a 0%, #070a10 60%, #04060a 100%); }
+    .bg-grid { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(118,185,0,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(118,185,0,.045) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(1400px 900px at 50% 50%, #000 35%, transparent 100%); -webkit-mask-image: radial-gradient(1400px 900px at 50% 50%, #000 35%, transparent 100%); }
+    .fx-scanbar { position: fixed; left: 0; right: 0; height: 220px; top: 0; z-index: 100; pointer-events: none; background: linear-gradient(180deg, transparent 0%, rgba(118,185,0,.04) 35%, rgba(149,227,11,.10) 50%, rgba(118,185,0,.04) 65%, transparent 100%); mix-blend-mode: screen; animation: scanbar 9s linear infinite; }
+    @keyframes scanbar { 0% { transform: translateY(-260px); } 100% { transform: translateY(110vh); } }
+    .fx-crt { position: fixed; inset: 0; z-index: 101; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px); opacity: .35; mix-blend-mode: multiply; }
+    .fx-vignette { position: fixed; inset: 0; z-index: 102; pointer-events: none; background: radial-gradient(1500px 1000px at 50% 50%, transparent 50%, rgba(0,0,0,.75) 100%); }
+    .fx-noise { position: fixed; inset: 0; z-index: 103; pointer-events: none; opacity: .05; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+
+    .corner { position: fixed; width: 18px; height: 18px; z-index: 10; border: 1px solid var(--nv-green); pointer-events: none; opacity: 0.5; }
+    .corner.tl { top: 60px; left: 28px; border-right: 0; border-bottom: 0; }
+    .corner.tr { top: 60px; right: 28px; border-left: 0; border-bottom: 0; }
+    .corner.bl { bottom: 56px; left: 28px; border-right: 0; border-top: 0; }
+    .corner.br { bottom: 56px; right: 28px; border-left: 0; border-top: 0; }
+
+    /* LAYOUT */
+    .topbar { position: sticky; top: 0; height: 48px; background: rgba(0,0,0,0.8); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; gap: 24px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; z-index: 110; backdrop-filter: blur(8px); }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; color: #fff; text-decoration: none; }
+    .brand .ox { color: var(--nv-green); }
+    .brand .feed { color: #fff; }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--nv-green); box-shadow: 0 0 10px var(--nv-green); animation: blink 2s infinite; }
+    @keyframes blink { 0%, 70% { opacity: 1; } 85% { opacity: 0.25; } 100% { opacity: 1; } }
+
+    .status { display: flex; gap: 24px; color: var(--gray-3); flex: 1; }
+    .status b { color: #fff; margin-right: 4px; }
+    .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--nv-green); margin-right: 6px; }
+    .dot.err { background: var(--red); box-shadow: 0 0 8px var(--red); }
+
+    .search { position: relative; display: flex; align-items: center; gap: 10px; background: var(--bg-2); border: 1px solid var(--border-bright); padding: 0 12px; height: 28px; border-radius: 4px; color: var(--gray-4); }
+    .search input { background: transparent; border: none; color: #fff; font-family: var(--mono); font-size: 11px; outline: none; width: 140px; }
+    .search .key { color: var(--gray-5); font-size: 10px; }
+
+    .hero { position: relative; padding: 80px 64px 40px; max-width: 1480px; margin: 0 auto; z-index: 10; }
+    .hero .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; color: var(--nv-green); font-weight: 700; text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+    .hero .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--nv-green); }
+    .hero h1 { font-size: clamp(32px, 4vw, 52px); font-weight: 700; line-height: 1.1; margin: 0 0 24px; letter-spacing: -0.02em; }
+    .hero h1 .gn { color: var(--nv-green); }
+    .hero p { max-width: 600px; font-size: 16px; line-height: 1.6; color: var(--gray-3); margin: 0; }
+
+    main { position: relative; max-width: 1480px; margin: 0 auto; padding: 0 64px 100px; z-index: 10; }
+    
+    .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 48px; }
+    .hub-card { position: relative; display: flex; flex-direction: column; padding: 24px; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; color: #fff; transition: all 0.2s ease; overflow: hidden; }
+    .hub-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--nv-green); transform: scaleY(0); transform-origin: top; transition: transform 0.2s ease; }
+    .hub-card:hover { border-color: var(--nv-green); transform: translateY(-4px); background: var(--panel-2); }
+    .hub-card:hover::before { transform: scaleY(1); }
+    .hub-card .num { font-family: var(--mono); font-size: 11px; color: var(--nv-green); font-weight: 700; margin-bottom: 16px; }
+    .hub-card h3 { font-size: 20px; font-weight: 700; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hub-card p { font-size: 14px; line-height: 1.5; color: var(--gray-3); margin: 0 0 24px; flex: 1; }
+    .hub-card .meta { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; color: var(--gray-5); text-transform: uppercase; letter-spacing: 0.1em; }
+    .hub-card:hover .meta { color: var(--gray-3); }
+    .hub-card .ar { color: var(--nv-green); }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+    .cell { grid-column: span 12; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 20px; position: relative; }
+    .cell.span6 { grid-column: span 6; }
+    .cell.flush { padding: 0; background: transparent; border: none; }
+    
+    .lbl { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gray-4); }
+    .lbl .live { color: var(--nv-green); font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .lbl .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--nv-green); box-shadow: 0 0 8px var(--nv-green); animation: blink 2s infinite; }
+
+    .tickers { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; }
+    .tickers::-webkit-scrollbar { display: none; }
+    .ticker-item { background: var(--bg-2); border: 1px solid var(--border-bright); padding: 10px 16px; border-radius: 2px; display: flex; align-items: center; gap: 12px; min-width: 140px; }
+    .ticker-item .sym { font-family: var(--mono); font-weight: 700; color: #fff; }
+    .ticker-item .price { font-family: var(--mono); font-weight: 500; }
+    .ticker-item .chg { font-family: var(--mono); font-weight: 700; font-size: 10px; }
+    .ticker-item .up { color: var(--nv-green); }
+    .ticker-item .down { color: var(--red); }
+
+    .feed-list { display: flex; flex-direction: column; gap: 4px; }
+    .article-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 10px 12px; background: rgba(255,255,255,0.02); border: 1px solid transparent; border-radius: 2px; text-decoration: none; color: #fff; transition: all 0.15s ease; }
+    .article-row:hover { background: var(--nv-green-soft); border-color: var(--nv-green-bright); transform: translateX(4px); }
+    .article-row .title { font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .article-row .date { font-family: var(--mono); font-size: 9px; color: var(--gray-5); text-transform: uppercase; margin-left: 12px; }
+    .article-row:hover .date { color: var(--nv-green); }
+
+    .loader { padding: 20px; text-align: center; font-family: var(--mono); font-size: 11px; color: var(--gray-5); text-transform: uppercase; letter-spacing: 0.2em; }
+    .loader::after { content: "..."; animation: loading 1.5s infinite; }
+    @keyframes loading { 0% { content: "."; } 33% { content: ".."; } 66% { content: "..."; } }
+
+    .note { padding: 40px 64px; font-family: var(--mono); font-size: 10px; color: var(--gray-5); text-transform: uppercase; letter-spacing: 0.15em; }
+
+    @media (max-width: 1080px) {
+      .hero, main, .note { padding-left: 24px; padding-right: 24px; }
+      .grid { gap: 16px; }
+      .cell.span6 { grid-column: span 12; }
+      .stage { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
+<div class="bg-base"></div>
+<div class="bg-grid"></div>
+<div class="fx-scanbar"></div>
+<div class="fx-crt"></div>
+<div class="fx-vignette"></div>
+<div class="fx-noise"></div>
+
+<span class="corner tl"></span>
+<span class="corner tr"></span>
+<span class="corner bl"></span>
+<span class="corner br"></span>
+
 <header class="topbar">
-  <div class="brand">
+  <a href="#" class="brand">
     <span class="pulse" aria-hidden="true"></span>
     <span class="ox">0x</span><span class="feed">FEED</span>
-  </div>
+  </a>
   <div class="status" role="status" aria-live="polite">
     <span><span class="dot" id="feed-status-dot"></span><b>FEEDS:</b>&nbsp;<span id="feed-status">initializing</span></span>
     <span><b>LAST:</b>&nbsp;<span id="last-updated">—</span></span>
@@ -25,7 +177,7 @@
   </div>
   <div class="search">
     <span aria-hidden="true">⌕</span>
-    <input id="q" type="search" placeholder="search the feed" aria-label="Search">
+    <input id="q" type="search" placeholder="SEARCH FEED" aria-label="Search">
     <span class="key">/</span>
   </div>
 </header>
@@ -39,7 +191,7 @@
 <main>
 
   <!-- nav cards -->
-  <div class="cell flush span12">
+  <div class="cell flush">
     <div class="hub-grid">
       <a class="hub-card" href="cyber_news.html">
         <div class="num">[01]</div>
@@ -64,7 +216,7 @@
 
   <!-- live tickers -->
   <div class="grid">
-    <div class="cell span12">
+    <div class="cell">
       <div class="lbl">
         <span>// markets · cybersecurity sector</span>
         <span class="live">LIVE</span>
@@ -72,14 +224,14 @@
       <div id="tickers" class="tickers">
         <div class="loader">loading quotes</div>
       </div>
-      <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:10px;color:var(--ink-3);letter-spacing:.12em;margin:10px 0 0">data: stooq.com · refreshed each page load</p>
+      <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:9px;color:var(--gray-5);letter-spacing:.12em;margin:10px 0 0">DATA: STOOQ.COM · REFRESHED EACH LOAD</p>
     </div>
 
     <!-- top breaches -->
     <div class="cell span6">
       <div class="lbl">
         <span>// top breaches & attacks</span>
-        <a href="cyber_news.html#breaches" style="color:var(--ink-3)">view all →</a>
+        <a href="cyber_news.html#breaches" style="color:var(--nv-green);text-decoration:none">view all →</a>
       </div>
       <div id="feed-breaches" class="feed-list"><div class="loader">fetching feeds</div></div>
     </div>
@@ -88,7 +240,7 @@
     <div class="cell span6">
       <div class="lbl">
         <span>// frontier ai · latest releases</span>
-        <a href="ai_news.html#products" style="color:var(--ink-3)">view all →</a>
+        <a href="ai_news.html#products" style="color:var(--nv-green);text-decoration:none">view all →</a>
       </div>
       <div id="feed-ai" class="feed-list"><div class="loader">fetching feeds</div></div>
     </div>
@@ -97,7 +249,7 @@
     <div class="cell span6">
       <div class="lbl">
         <span>// gov advisories</span>
-        <a href="cyber_news.html#gov" style="color:var(--ink-3)">view all →</a>
+        <a href="cyber_news.html#gov" style="color:var(--nv-green);text-decoration:none">view all →</a>
       </div>
       <div id="feed-gov" class="feed-list"><div class="loader">fetching feeds</div></div>
     </div>
@@ -105,7 +257,7 @@
     <div class="cell span6">
       <div class="lbl">
         <span>// k-12 cyber education</span>
-        <a href="cyber_news.html#k12" style="color:var(--ink-3)">view all →</a>
+        <a href="cyber_news.html#k12" style="color:var(--nv-green);text-decoration:none">view all →</a>
       </div>
       <div id="feed-k12" class="feed-list"><div class="loader">fetching feeds</div></div>
     </div>
@@ -119,40 +271,67 @@
 <script src="assets/feed.js"></script>
 <script>
 (async function init(){
-  OXFEED.bindSearch("q", ".art");
+  if (window.OXFEED) {
+    OXFEED.bindSearch("q", ".article-row");
 
-  // ticker symbols (cyber pure-play + adjacent)
-  const TICKERS = ["CRWD","PANW","ZS","FTNT","S","OKTA","CYBR","NET"];
-  const tk = await OXFEED.fetchTickers(TICKERS);
-  const tkEl = document.getElementById("tickers");
-  if (tk.length) {
-    tkEl.innerHTML = tk.map(OXFEED.renderTicker).join("");
-  } else {
-    tkEl.innerHTML = '<div class="empty" style="padding:18px">quotes unavailable. retry on refresh.</div>';
-  }
-
-  // pull category feeds for the hub
-  const tasks = [
-    ["breaches", "feed-breaches", 6],
-    ["ai_products", "feed-ai", 6],
-    ["cyber_gov", "feed-gov", 6],
-    ["cyber_k12", "feed-k12", 6]
-  ];
-  let okCount = 0;
-  for (const [cat, elId, cap] of tasks) {
-    const items = await OXFEED.fetchCategory(cat, 4);
-    const el = document.getElementById(elId);
-    if (items.length) {
-      el.innerHTML = items.slice(0, cap).map(OXFEED.renderArticleRow).join("");
-      okCount++;
+    // ticker symbols (cyber pure-play + adjacent)
+    const TICKERS = ["CRWD","PANW","ZS","FTNT","S","OKTA","CYBR","NET"];
+    const tk = await OXFEED.fetchTickers(TICKERS);
+    const tkEl = document.getElementById("tickers");
+    if (tk && tk.length) {
+      tkEl.innerHTML = tk.map(OXFEED.renderTicker).join("");
     } else {
-      el.innerHTML = '<div class="empty">no items. feed offline or filtered.</div>';
+      tkEl.innerHTML = '<div class="empty" style="padding:18px;font-family:var(--mono);font-size:11px;color:var(--gray-5)">quotes unavailable. retry on refresh.</div>';
     }
+
+    // pull category feeds for the hub
+    const tasks = [
+      ["breaches", "feed-breaches", 6],
+      ["ai_products", "feed-ai", 6],
+      ["cyber_gov", "feed-gov", 6],
+      ["cyber_k12", "feed-k12", 6]
+    ];
+    let okCount = 0;
+    for (const [cat, elId, cap] of tasks) {
+      const items = await OXFEED.fetchCategory(cat, 4);
+      const el = document.getElementById(elId);
+      if (items && items.length) {
+        el.innerHTML = items.slice(0, cap).map(item => {
+           // Custom render to match our new style
+           return `<a class="article-row" href="${item.url}" target="_blank">
+             <span class="title">${item.title}</span>
+             <span class="date">${item.date}</span>
+           </a>`;
+        }).join("");
+        okCount++;
+      } else {
+        el.innerHTML = '<div class="empty" style="padding:12px;font-family:var(--mono);font-size:11px;color:var(--gray-5)">no items. feed offline or filtered.</div>';
+      }
+    }
+
+    const statusEl = document.getElementById("feed-status");
+    if (statusEl) statusEl.textContent = `${okCount}/${tasks.length} OK`;
+    const dotEl = document.getElementById("feed-status-dot");
+    if (dotEl) dotEl.classList.toggle("err", okCount === 0);
+    OXFEED.setUpdated("last-updated");
   }
 
-  document.getElementById("feed-status").textContent = `${okCount}/${tasks.length} OK`;
-  document.getElementById("feed-status-dot").classList.toggle("err", okCount === 0);
-  OXFEED.setUpdated("last-updated");
+  // occasional, very subtle full-page glitch shake
+  (function () {
+    const root = document.documentElement;
+    function pulse() {
+      if (typeof root.animate === 'function') {
+        root.animate([
+          { filter: 'none', transform: 'translate(0,0)' },
+          { filter: 'hue-rotate(8deg) contrast(1.04)', transform: 'translate(1px,-1px)' },
+          { filter: 'none', transform: 'translate(-1px,0)' },
+          { filter: 'none', transform: 'translate(0,0)' }
+        ], { duration: 320, easing: 'steps(4)' });
+      }
+      setTimeout(pulse, 6000 + Math.random() * 9000);
+    }
+    setTimeout(pulse, 4000);
+  })();
 })();
 </script>
 
