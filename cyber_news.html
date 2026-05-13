@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,24 +9,168 @@
   <link rel="icon" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --nv-green:        #76b900;
+      --nv-green-bright: #95e30b;
+      --nv-green-soft:   rgba(118,185,0,.18);
+      --teal:            #1eaedb;
+      --bg:              #05070a;
+      --bg-2:            #0a0e14;
+      --panel:            #0e1218;
+      --panel-2:         #11161e;
+      --border:          #1a2230;
+      --border-bright:   #2a3a52;
+      --gray-3:          #a7a7a7;
+      --gray-4:          #6a7888;
+      --gray-5:          #485668;
+      --red:              #e52020;
+
+      --mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+      --display: "Space Grotesk", Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; padding: 0; min-height: 100vh; background: var(--bg); color: #fff; font-family: var(--display); -webkit-font-smoothing: antialiased; }
+    
+    /* BACKGROUND & EFFECTS */
+    .bg-base { position: fixed; inset: 0; z-index: -2; background: radial-gradient(900px 600px at 18% 38%, rgba(118,185,0,.10), transparent 60%), radial-gradient(800px 600px at 88% 78%, rgba(30,174,219,.06), transparent 60%), linear-gradient(180deg, #04060a 0%, #070a10 60%, #04060a 100%); }
+    .bg-grid { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(118,185,0,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(118,185,0,.045) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(1400px 900px at 50% 50%, #000 35%, transparent 100%); -webkit-mask-image: radial-gradient(1400px 900px at 50% 50%, #000 35%, transparent 100%); }
+    .fx-scanbar { position: fixed; left: 0; right: 0; height: 220px; top: 0; z-index: 100; pointer-events: none; background: linear-gradient(180deg, transparent 0%, rgba(118,185,0,.04) 35%, rgba(149,227,11,.10) 50%, rgba(118,185,0,.04) 65%, transparent 100%); mix-blend-mode: screen; animation: scanbar 9s linear infinite; }
+    @keyframes scanbar { 0% { transform: translateY(-260px); } 100% { transform: translateY(110vh); } }
+    .fx-crt { position: fixed; inset: 0; z-index: 101; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px); opacity: .35; mix-blend-mode: multiply; }
+    .fx-vignette { position: fixed; inset: 0; z-index: 102; pointer-events: none; background: radial-gradient(1500px 1000px at 50% 50%, transparent 50%, rgba(0,0,0,.75) 100%); }
+    .fx-noise { position: fixed; inset: 0; z-index: 103; pointer-events: none; opacity: .05; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+
+    .corner { position: fixed; width: 18px; height: 18px; z-index: 10; border: 1px solid var(--nv-green); pointer-events: none; opacity: 0.5; }
+    .corner.tl { top: 60px; left: 28px; border-right: 0; border-bottom: 0; }
+    .corner.tr { top: 60px; right: 28px; border-left: 0; border-bottom: 0; }
+    .corner.bl { bottom: 56px; left: 28px; border-right: 0; border-top: 0; }
+    .corner.br { bottom: 56px; right: 28px; border-left: 0; border-top: 0; }
+
+    /* TOPBAR */
+    .topbar { position: sticky; top: 0; height: 48px; background: rgba(0,0,0,0.8); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; gap: 24px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; z-index: 110; backdrop-filter: blur(8px); }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; color: #fff; text-decoration: none; }
+    .brand .ox { color: var(--nv-green); }
+    .brand .feed { color: #fff; }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--nv-green); box-shadow: 0 0 10px var(--nv-green); animation: blink 2s infinite; }
+    @keyframes blink { 0%, 70% { opacity: 1; } 85% { opacity: 0.25; } 100% { opacity: 1; } }
+
+    .status { display: flex; gap: 24px; color: var(--gray-3); flex: 1; }
+    .status b { color: #fff; margin-right: 4px; }
+    .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--nv-green); margin-right: 6px; }
+    .dot.err { background: var(--red); box-shadow: 0 0 8px var(--red); }
+
+    .search { position: relative; display: flex; align-items: center; gap: 10px; background: var(--bg-2); border: 1px solid var(--border-bright); padding: 0 12px; height: 28px; border-radius: 4px; color: var(--gray-4); }
+    .search input { background: transparent; border: none; color: #fff; font-family: var(--mono); font-size: 11px; outline: none; width: 140px; }
+    .search .key { color: var(--gray-5); font-size: 10px; }
+
+    /* PAGE HEAD */
+    .page-head { position: relative; padding: 80px 64px 40px; max-width: 1480px; margin: 0 auto; z-index: 10; display: flex; justify-content: space-between; align-items: flex-end; }
+    .page-head .titles { flex: 1; }
+    .page-head .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; color: var(--nv-green); font-weight: 700; text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+    .page-head .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--nv-green); }
+    .page-head h1 { font-size: clamp(32px, 4vw, 52px); font-weight: 700; line-height: 1.1; margin: 0 0 24px; letter-spacing: -0.02em; }
+    .page-head h1 .gn { color: var(--nv-green); }
+    .page-head p { max-width: 600px; font-size: 16px; line-height: 1.6; color: var(--gray-3); margin: 0; }
+    
+    .backbtn { display: inline-flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; color: #fff; text-decoration: none; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.2s ease; }
+    .backbtn:hover { border-color: var(--nv-green); background: var(--panel-2); transform: translateX(-4px); }
+    .backbtn .ar { color: var(--nv-green); font-size: 14px; }
+
+    /* SUB NAV */
+    .subnav { position: sticky; top: 48px; z-index: 100; background: rgba(5,7,10,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 64px; }
+    .subnav-inner { max-width: 1352px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+    .subnav-inner::-webkit-scrollbar { display: none; }
+    .subnav-inner a { padding: 16px 24px; color: var(--gray-4); text-decoration: none; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; border-right: 1px solid var(--border); transition: all 0.2s ease; white-space: nowrap; }
+    .subnav-inner a:hover { color: #fff; background: var(--panel); }
+    .subnav-inner a.active { color: var(--nv-green); border-bottom: 2px solid var(--nv-green); }
+
+    /* MAIN */
+    main { position: relative; max-width: 1480px; margin: 0 auto; padding: 48px 64px 100px; z-index: 10; }
+    
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; margin-bottom: 64px; }
+    .cell { grid-column: span 12; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 24px; position: relative; }
+    
+    .lbl { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gray-4); }
+    .lbl .live { color: var(--nv-green); font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .lbl .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--nv-green); box-shadow: 0 0 8px var(--nv-green); animation: blink 2s infinite; }
+    
+    .section-sub { font-size: 13px; color: var(--gray-5); margin-top: -8px; margin-bottom: 24px; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* FEED LIST */
+    .feed-list { display: flex; flex-direction: column; gap: 4px; }
+    .article-row { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 12px 16px; background: rgba(255,255,255,0.02); border: 1px solid transparent; border-radius: 2px; text-decoration: none; color: #fff; transition: all 0.15s ease; }
+    .article-row:hover { background: var(--nv-green-soft); border-color: var(--nv-green-bright); transform: translateX(4px); }
+    .article-row .title { font-size: 15px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .article-row .date { font-family: var(--mono); font-size: 10px; color: var(--gray-5); text-transform: uppercase; margin-left: 16px; }
+    .article-row:hover .date { color: var(--nv-green); }
+
+    /* TICKERS */
+    .tickers { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: none; margin-bottom: 24px; }
+    .tickers::-webkit-scrollbar { display: none; }
+    .ticker-item { background: var(--bg-2); border: 1px solid var(--border-bright); padding: 10px 16px; border-radius: 2px; display: flex; align-items: center; gap: 12px; min-width: 140px; }
+    .ticker-item .sym { font-family: var(--mono); font-weight: 700; color: #fff; }
+    .ticker-item .price { font-family: var(--mono); font-weight: 500; }
+    .ticker-item .chg { font-family: var(--mono); font-weight: 700; font-size: 10px; }
+    .ticker-item .up { color: var(--nv-green); }
+    .ticker-item .down { color: var(--red); }
+
+    /* LIST CARDS (COMPETITIONS) */
+    .list-card { display: grid; grid-template-columns: 48px 1fr auto; gap: 24px; padding: 24px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; color: #fff; transition: all 0.2s ease; margin-bottom: 8px; }
+    .list-card:hover { border-color: var(--nv-green); background: var(--panel); transform: translateX(8px); }
+    .list-card .idx { font-family: var(--mono); font-size: 14px; color: var(--nv-green); font-weight: 700; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); height: 40px; }
+    .list-card h4 { font-size: 18px; font-weight: 700; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .list-card .meta { display: flex; gap: 16px; font-family: var(--mono); font-size: 10px; color: var(--gray-4); text-transform: uppercase; margin-bottom: 12px; }
+    .list-card .tier { color: var(--nv-green); font-weight: 700; }
+    .list-card p { font-size: 14px; line-height: 1.5; color: var(--gray-3); margin: 0; }
+    .list-card .visit { font-family: var(--mono); font-size: 10px; color: var(--gray-5); text-transform: uppercase; align-self: center; }
+    .list-card:hover .visit { color: var(--nv-green); }
+
+    .loader { padding: 40px; text-align: center; font-family: var(--mono); font-size: 11px; color: var(--gray-5); text-transform: uppercase; letter-spacing: 0.2em; }
+    .loader::after { content: "..."; animation: loading 1.5s infinite; }
+    @keyframes loading { 0% { content: "."; } 33% { content: ".."; } 66% { content: "..."; } }
+
+    .note { padding: 40px 64px; font-family: var(--mono); font-size: 10px; color: var(--gray-5); text-transform: uppercase; letter-spacing: 0.15em; text-align: center; }
+
+    @media (max-width: 1080px) {
+      .page-head, main, .note, .subnav { padding-left: 24px; padding-right: 24px; }
+      .page-head { flex-direction: column; align-items: flex-start; gap: 32px; }
+      .list-card { grid-template-columns: 1fr; gap: 16px; }
+      .list-card .idx { border-right: 0; border-bottom: 1px solid var(--border); justify-content: flex-start; height: auto; padding-bottom: 8px; }
+      .list-card .visit { display: none; }
+    }
+  </style>
 </head>
 <body>
 
+<div class="bg-base"></div>
+<div class="bg-grid"></div>
+<div class="fx-scanbar"></div>
+<div class="fx-crt"></div>
+<div class="fx-vignette"></div>
+<div class="fx-noise"></div>
+
+<span class="corner tl"></span>
+<span class="corner tr"></span>
+<span class="corner bl"></span>
+<span class="corner br"></span>
+
 <header class="topbar">
-  <div class="brand">
+  <a href="index.html" class="brand">
     <span class="pulse" aria-hidden="true"></span>
     <span class="ox">0x</span><span class="feed">FEED</span>
-  </div>
+  </a>
   <div class="status" role="status" aria-live="polite">
     <span><span class="dot" id="feed-status-dot"></span><b>FEEDS:</b>&nbsp;<span id="feed-status">initializing</span></span>
     <span><b>LAST:</b>&nbsp;<span id="last-updated">—</span></span>
-    <span id="search-count" style="color:var(--green)"></span>
+    <span id="search-count" style="color:var(--nv-green)"></span>
   </div>
   <div class="search">
     <span aria-hidden="true">⌕</span>
-    <input id="q" type="search" placeholder="search this page" aria-label="Search">
+    <input id="q" type="search" placeholder="SEARCH PAGE" aria-label="Search">
     <span class="key">/</span>
   </div>
 </header>
@@ -36,17 +181,17 @@
     <h1>Cyber<span class="gn">.</span>News</h1>
     <p>Breaches, advisories, markets, certs, K-12, and competitions. Sources linked. Auto-updated.</p>
   </div>
-  <a class="backbtn" href="cyber.html"><span class="ar">←</span> dashboard</a>
+  <a class="backbtn" href="cyber-dashboard-redesign.html"><span class="ar">←</span> DASHBOARD</a>
 </section>
 
-<nav class="cell flush span12" style="border-bottom:1px solid var(--line)">
-  <div style="display:flex;gap:0;flex-wrap:wrap;font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase">
-    <a href="#breaches"     style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">a · breaches</a>
-    <a href="#gov"          style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">b · u.s. gov</a>
-    <a href="#markets"      style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">c · markets</a>
-    <a href="#certs"        style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">d · certs</a>
-    <a href="#k12"          style="padding:14px 18px;border-right:1px solid var(--line);color:var(--ink-2)">e · k-12 ed</a>
-    <a href="#competitions" style="padding:14px 18px;color:var(--ink-2)">f · competitions</a>
+<nav class="subnav">
+  <div class="subnav-inner">
+    <a href="#breaches">A · Breaches</a>
+    <a href="#gov">B · U.S. Gov</a>
+    <a href="#markets">C · Markets</a>
+    <a href="#certs">D · Certs</a>
+    <a href="#k12">E · K-12 Ed</a>
+    <a href="#competitions">F · Competitions</a>
   </div>
 </nav>
 
@@ -54,29 +199,29 @@
 
   <!-- A: Breaches -->
   <section id="breaches" class="grid">
-    <div class="cell span12">
+    <div class="cell">
       <div class="lbl"><span>// a · latest breaches, hacks, cyber attacks</span><span class="live">LIVE</span></div>
-      <p class="section-sub" style="margin-bottom:18px">Krebs, BleepingComputer, The Hacker News, Dark Reading, SecurityWeek.</p>
+      <p class="section-sub">Krebs, BleepingComputer, The Hacker News, Dark Reading, SecurityWeek.</p>
       <div id="feed-breaches" class="feed-list"><div class="loader">fetching feeds</div></div>
     </div>
   </section>
 
   <!-- B: Gov -->
   <section id="gov" class="grid">
-    <div class="cell span12">
+    <div class="cell">
       <div class="lbl"><span>// b · u.s. government cyber news</span><span class="live">LIVE</span></div>
-      <p class="section-sub" style="margin-bottom:18px">CISA advisories, US-CERT alerts, FBI IC3.</p>
+      <p class="section-sub">CISA advisories, US-CERT alerts, FBI IC3.</p>
       <div id="feed-gov" class="feed-list"><div class="loader">fetching feeds</div></div>
     </div>
   </section>
 
   <!-- C: Markets -->
   <section id="markets" class="grid">
-    <div class="cell span12">
+    <div class="cell">
       <div class="lbl"><span>// c · stock market & financial · cyber sector</span><span class="live">LIVE</span></div>
-      <p class="section-sub" style="margin-bottom:14px">CRWD, PANW, ZS, FTNT, S, OKTA, CYBR, NET. Quotes from stooq.com, news from Reuters and Yahoo Finance.</p>
+      <p class="section-sub">CRWD, PANW, ZS, FTNT, S, OKTA, CYBR, NET. Quotes from stooq.com, news from Reuters and Yahoo Finance.</p>
 
-      <div id="tickers" class="tickers" style="margin:8px 0 22px;border:1px solid var(--line);border-radius:3px">
+      <div id="tickers" class="tickers">
         <div class="loader">loading quotes</div>
       </div>
 
@@ -86,86 +231,136 @@
 
   <!-- D: Certs -->
   <section id="certs" class="grid">
-    <div class="cell span12">
+    <div class="cell">
       <div class="lbl"><span>// d · industry-recognized credentials</span><span class="live">LIVE</span></div>
-      <p class="section-sub" style="margin-bottom:18px">ISC2, CompTIA, EC-Council, SANS.</p>
+      <p class="section-sub">ISC2, CompTIA, EC-Council, SANS.</p>
       <div id="feed-certs" class="feed-list"><div class="loader">fetching feeds</div></div>
     </div>
   </section>
 
   <!-- E: K-12 ed -->
   <section id="k12" class="grid">
-    <div class="cell span12">
+    <div class="cell">
       <div class="lbl"><span>// e · k-12 cybersecurity education</span><span class="live">LIVE</span></div>
-      <p class="section-sub" style="margin-bottom:18px">Education Week, K12 Dive, EdSurge.</p>
+      <p class="section-sub">Education Week, K12 Dive, EdSurge.</p>
       <div id="feed-k12" class="feed-list"><div class="loader">fetching feeds</div></div>
     </div>
   </section>
 
-  <!-- F: Competitions (live feed + seeded list) -->
+  <!-- F: Competitions -->
   <section id="competitions" class="grid">
-    <div class="cell span12">
+    <div class="cell">
       <div class="lbl"><span>// f · k-12 cyber competitions</span><span class="live">LIVE</span></div>
-      <p class="section-sub" style="margin-bottom:18px">News from CyberPatriot, picoCTF, NCL plus the top 10 US student competitions.</p>
-      <div id="feed-competitions" class="feed-list" style="margin-bottom:24px"><div class="loader">fetching feeds</div></div>
+      <p class="section-sub">News from CyberPatriot, picoCTF, NCL plus the top 10 US student competitions.</p>
+      <div id="feed-competitions" class="feed-list" style="margin-bottom:48px"><div class="loader">fetching feeds</div></div>
 
-      <div class="lbl" style="margin-top:8px"><span>// top 10 us student competitions</span></div>
+      <div class="lbl"><span>// top 10 us student competitions</span></div>
       <div id="comp-seed" class="feed-list"></div>
     </div>
   </section>
 
 </main>
 
-<p class="note">// sources linked on every article · 0xFEED is a content aggregator · all rights remain with original publishers</p>
+<p class="note">// 0xFEED · feeding you cyber intel · GitHub Pages + Cloudflare</p>
 
 <script src="assets/feed.js"></script>
 <script>
 (async function init(){
-  OXFEED.bindSearch("q", ".art, .list-card");
+  if (window.OXFEED) {
+    OXFEED.bindSearch("q", ".article-row, .list-card");
 
-  // tickers
-  const TICKERS = ["CRWD","PANW","ZS","FTNT","S","OKTA","CYBR","NET"];
-  const tk = await OXFEED.fetchTickers(TICKERS);
-  const tkEl = document.getElementById("tickers");
-  tkEl.innerHTML = tk.length ? tk.map(OXFEED.renderTicker).join("") : '<div class="empty" style="padding:18px">quotes unavailable</div>';
-
-  // seeded competitions list
-  const seedEl = document.getElementById("comp-seed");
-  seedEl.innerHTML = OXFEED.COMPETITIONS.map((c, i) => `
-    <a class="list-card" href="${OXFEED.escapeHtml(c.url)}" target="_blank" rel="noopener noreferrer">
-      <div class="idx">${String(i+1).padStart(2,"0")}</div>
-      <div>
-        <h4>${OXFEED.escapeHtml(c.name)}</h4>
-        <div class="meta"><span class="tier">${OXFEED.escapeHtml(c.org)}</span><span>${OXFEED.escapeHtml(c.grades)}</span></div>
-        <p>${OXFEED.escapeHtml(c.desc)}</p>
-      </div>
-      <span class="visit">visit →</span>
-    </a>`).join("");
-
-  // feeds
-  const tasks = [
-    ["breaches",          "feed-breaches",     8],
-    ["cyber_gov",         "feed-gov",          8],
-    ["cyber_market",      "feed-markets",      8],
-    ["cyber_certs",       "feed-certs",        8],
-    ["cyber_k12",         "feed-k12",          8],
-    ["cyber_competitions","feed-competitions", 8]
-  ];
-  let okCount = 0;
-  for (const [cat, elId, cap] of tasks) {
-    const items = await OXFEED.fetchCategory(cat, 5);
-    const el = document.getElementById(elId);
-    if (items.length) {
-      el.innerHTML = items.slice(0, cap).map(OXFEED.renderArticleRow).join("");
-      okCount++;
+    // tickers
+    const TICKERS = ["CRWD","PANW","ZS","FTNT","S","OKTA","CYBR","NET"];
+    const tk = await OXFEED.fetchTickers(TICKERS);
+    const tkEl = document.getElementById("tickers");
+    if (tk && tk.length) {
+      tkEl.innerHTML = tk.map(OXFEED.renderTicker).join("");
     } else {
-      el.innerHTML = '<div class="empty">no items. feed offline or filtered.</div>';
+      tkEl.innerHTML = '<div class="empty" style="padding:18px;font-family:var(--mono);font-size:11px;color:var(--gray-5)">quotes unavailable</div>';
     }
+
+    // seeded competitions list
+    const seedEl = document.getElementById("comp-seed");
+    if (OXFEED.COMPETITIONS) {
+      seedEl.innerHTML = OXFEED.COMPETITIONS.map((c, i) => `
+        <a class="list-card" href="${OXFEED.escapeHtml(c.url)}" target="_blank" rel="noopener noreferrer">
+          <div class="idx">${String(i+1).padStart(2,"0")}</div>
+          <div>
+            <h4>${OXFEED.escapeHtml(c.name)}</h4>
+            <div class="meta"><span class="tier">${OXFEED.escapeHtml(c.org)}</span><span>${OXFEED.escapeHtml(c.grades)}</span></div>
+            <p>${OXFEED.escapeHtml(c.desc)}</p>
+          </div>
+          <span class="visit">visit →</span>
+        </a>`).join("");
+    }
+
+    // feeds
+    const tasks = [
+      ["breaches",          "feed-breaches",     8],
+      ["cyber_gov",         "feed-gov",          8],
+      ["cyber_market",      "feed-markets",      8],
+      ["cyber_certs",       "feed-certs",        8],
+      ["cyber_k12",         "feed-k12",          8],
+      ["cyber_competitions","feed-competitions", 8]
+    ];
+    let okCount = 0;
+    for (const [cat, elId, cap] of tasks) {
+      const items = await OXFEED.fetchCategory(cat, 5);
+      const el = document.getElementById(elId);
+      if (items && items.length) {
+        el.innerHTML = items.slice(0, cap).map(item => {
+           return `<a class="article-row" href="${item.url}" target="_blank">
+             <span class="title">${item.title}</span>
+             <span class="date">${item.date}</span>
+           </a>`;
+        }).join("");
+        okCount++;
+      } else {
+        el.innerHTML = '<div class="empty" style="padding:12px;font-family:var(--mono);font-size:11px;color:var(--gray-5)">no items. feed offline or filtered.</div>';
+      }
+    }
+
+    const statusEl = document.getElementById("feed-status");
+    if (statusEl) statusEl.textContent = `${okCount}/${tasks.length} OK`;
+    const dotEl = document.getElementById("feed-status-dot");
+    if (dotEl) dotEl.classList.toggle("err", okCount === 0);
+    OXFEED.setUpdated("last-updated");
   }
 
-  document.getElementById("feed-status").textContent = `${okCount}/${tasks.length} OK`;
-  document.getElementById("feed-status-dot").classList.toggle("err", okCount === 0);
-  OXFEED.setUpdated("last-updated");
+  // occasional, very subtle full-page glitch shake
+  (function () {
+    const root = document.documentElement;
+    function pulse() {
+      if (typeof root.animate === 'function') {
+        root.animate([
+          { filter: 'none', transform: 'translate(0,0)' },
+          { filter: 'hue-rotate(8deg) contrast(1.04)', transform: 'translate(1px,-1px)' },
+          { filter: 'none', transform: 'translate(-1px,0)' },
+          { filter: 'none', transform: 'translate(0,0)' }
+        ], { duration: 320, easing: 'steps(4)' });
+      }
+      setTimeout(pulse, 6000 + Math.random() * 9000);
+    }
+    setTimeout(pulse, 4000);
+  })();
+
+  // Subnav active state on scroll
+  window.addEventListener('scroll', () => {
+    let current = "";
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (pageYOffset >= sectionTop - 120) {
+        current = section.getAttribute("id");
+      }
+    });
+    document.querySelectorAll(".subnav-inner a").forEach(a => {
+      a.classList.remove("active");
+      if (a.getAttribute("href") === `#${current}`) {
+        a.classList.add("active");
+      }
+    });
+  });
 })();
 </script>
 
