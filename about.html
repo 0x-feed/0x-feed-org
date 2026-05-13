@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>0xFEED // About Me</title>
+  <meta name="description" content="Meet Robert Speciale, founder of 0xFEED. Educator, IT veteran, and Cybersecurity advocate.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --nv-green:        #76b900;
+      --nv-green-bright: #95e30b;
+      --nv-green-soft:   rgba(118,185,0,.18);
+      --teal:            #1eaedb;
+      --bg:              #05070a;
+      --bg-2:            #0a0e14;
+      --panel:            #0e1218;
+      --panel-2:         #11161e;
+      --border:          #1a2230;
+      --border-bright:   #2a3a52;
+      --gray-3:          #a7a7a7;
+      --gray-4:          #6a7888;
+      --gray-5:          #485668;
+      --red:              #e52020;
+
+      --mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+      --display: "Space Grotesk", Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; padding: 0; min-height: 100vh; background: var(--bg); color: #fff; font-family: var(--display); -webkit-font-smoothing: antialiased; }
+    
+    /* BACKGROUND & EFFECTS */
+    .bg-base { position: fixed; inset: 0; z-index: -2; background: radial-gradient(900px 600px at 18% 38%, rgba(118,185,0,.10), transparent 60%), radial-gradient(800px 600px at 88% 78%, rgba(30,174,219,.06), transparent 60%), linear-gradient(180deg, #04060a 0%, #070a10 60%, #04060a 100%); }
+    .bg-grid { position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(118,185,0,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(118,185,0,.045) 1px, transparent 1px); background-size: 64px 64px; mask-image: radial-gradient(1400px 900px at 50% 50%, #000 35%, transparent 100%); -webkit-mask-image: radial-gradient(1400px 900px at 50% 50%, #000 35%, transparent 100%); }
+    .fx-scanbar { position: fixed; left: 0; right: 0; height: 220px; top: 0; z-index: 100; pointer-events: none; background: linear-gradient(180deg, transparent 0%, rgba(118,185,0,.04) 35%, rgba(149,227,11,.10) 50%, rgba(118,185,0,.04) 65%, transparent 100%); mix-blend-mode: screen; animation: scanbar 9s linear infinite; }
+    @keyframes scanbar { 0% { transform: translateY(-260px); } 100% { transform: translateY(110vh); } }
+    .fx-crt { position: fixed; inset: 0; z-index: 101; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px); opacity: .35; mix-blend-mode: multiply; }
+    .fx-vignette { position: fixed; inset: 0; z-index: 102; pointer-events: none; background: radial-gradient(1500px 1000px at 50% 50%, transparent 50%, rgba(0,0,0,.75) 100%); }
+    .fx-noise { position: fixed; inset: 0; z-index: 103; pointer-events: none; opacity: .05; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+
+    .corner { position: fixed; width: 18px; height: 18px; z-index: 10; border: 1px solid var(--nv-green); pointer-events: none; opacity: 0.5; }
+    .corner.tl { top: 60px; left: 28px; border-right: 0; border-bottom: 0; }
+    .corner.tr { top: 60px; right: 28px; border-left: 0; border-bottom: 0; }
+    .corner.bl { bottom: 56px; left: 28px; border-right: 0; border-top: 0; }
+    .corner.br { bottom: 56px; right: 28px; border-left: 0; border-top: 0; }
+
+    /* TOPBAR */
+    .topbar { position: sticky; top: 0; height: 48px; background: rgba(0,0,0,0.8); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; gap: 24px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; z-index: 110; backdrop-filter: blur(8px); }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; color: #fff; text-decoration: none; }
+    .brand .ox { color: var(--nv-green); }
+    .brand .feed { color: #fff; }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--nv-green); box-shadow: 0 0 10px var(--nv-green); animation: blink 2s infinite; }
+    @keyframes blink { 0%, 70% { opacity: 1; } 85% { opacity: 0.25; } 100% { opacity: 1; } }
+
+    .status { display: flex; gap: 24px; color: var(--gray-3); flex: 1; }
+    .status b { color: #fff; margin-right: 4px; }
+    .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--nv-green); margin-right: 6px; }
+
+    /* PAGE HEAD */
+    .page-head { position: relative; padding: 80px 64px 40px; max-width: 1480px; margin: 0 auto; z-index: 10; display: flex; justify-content: space-between; align-items: flex-end; }
+    .page-head .titles { flex: 1; }
+    .page-head .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.28em; color: var(--nv-green); font-weight: 700; text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+    .page-head .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--nv-green); }
+    .page-head h1 { font-size: clamp(32px, 4vw, 52px); font-weight: 700; line-height: 1.1; margin: 0 0 24px; letter-spacing: -0.02em; }
+    .page-head h1 .gn { color: var(--nv-green); }
+    .page-head p { max-width: 600px; font-size: 16px; line-height: 1.6; color: var(--gray-3); margin: 0; }
+    
+    .backbtn { display: inline-flex; align-items: center; gap: 12px; padding: 12px 20px; background: var(--panel); border: 1px solid var(--border); border-radius: 4px; color: #fff; text-decoration: none; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.2s ease; }
+    .backbtn:hover { border-color: var(--nv-green); background: var(--panel-2); transform: translateX(-4px); }
+    .backbtn .ar { color: var(--nv-green); font-size: 14px; }
+
+    /* MAIN */
+    main { position: relative; max-width: 800px; margin: 0 auto; padding: 48px 64px 100px; z-index: 10; }
+    
+    .bio-section { margin-bottom: 64px; }
+    .lbl { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gray-4); }
+    
+    .prose { font-size: 18px; line-height: 1.7; color: var(--gray-3); }
+    .prose p { margin-bottom: 24px; }
+    .prose b { color: #fff; font-weight: 600; }
+    
+    .award-list { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .award-item { display: grid; grid-template-columns: 48px 1fr; gap: 16px; padding: 16px; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px; transition: all 0.2s ease; }
+    .award-item:hover { border-color: var(--nv-green); background: var(--panel); transform: translateX(8px); }
+    .award-year { font-family: var(--mono); font-size: 12px; color: var(--nv-green); font-weight: 700; border-right: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+    .award-text { font-size: 15px; font-weight: 600; color: #fff; align-self: center; }
+
+    .note { padding: 40px 64px; font-family: var(--mono); font-size: 10px; color: var(--gray-5); text-transform: uppercase; letter-spacing: 0.15em; text-align: center; }
+
+    @media (max-width: 1080px) {
+      .page-head, main, .note { padding-left: 24px; padding-right: 24px; }
+      .page-head { flex-direction: column; align-items: flex-start; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-base"></div>
+<div class="bg-grid"></div>
+<div class="fx-scanbar"></div>
+<div class="fx-crt"></div>
+<div class="fx-vignette"></div>
+<div class="fx-noise"></div>
+
+<span class="corner tl"></span>
+<span class="corner tr"></span>
+<span class="corner bl"></span>
+<span class="corner br"></span>
+
+<header class="topbar">
+  <a href="index.html" class="brand">
+    <span class="pulse" aria-hidden="true"></span>
+    <span class="ox">0x</span><span class="feed">FEED</span>
+  </a>
+  <div class="status" role="status">
+    <span><b>FOUNDER:</b>&nbsp;R. SPECIALE</span>
+    <span><b>BASE:</b>&nbsp;LAS VEGAS, NV</span>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="titles">
+    <p class="eyebrow">// 00 · IDENTITY</p>
+    <h1>Robert<span class="gn">.</span>Speciale</h1>
+    <p>Founder & CEO of 0xFEED. 11-year classroom veteran, Cybersecurity educator, and IT specialist.</p>
+  </div>
+  <a class="backbtn" href="cyber-dashboard-redesign.html"><span class="ar">←</span> DASHBOARD</a>
+</section>
+
+<main>
+
+  <section class="bio-section">
+    <div class="lbl"><span>// bio · background + expertise</span></div>
+    <div class="prose">
+      <p>Robert Speciale, the founder and CEO of <b>0xFEED</b>, is an 11-year veteran in the classroom with several years of experience teaching <b>Cybersecurity</b> and <b>Computer Science</b>.</p>
+      <p>His educational background is backed by a decade-plus career in <b>Information Technology</b> across multiple industries and capacities, bringing real-world tactical knowledge to the next generation of defenders.</p>
+      <p>A New York City native and lifelong Yankees fan, Mr. Speciale has called Las Vegas home since 2003.</p>
+    </div>
+  </section>
+
+  <section class="bio-section">
+    <div class="lbl"><span>// credentials · academic focus</span></div>
+    <div class="prose">
+      <p>Mr. Speciale holds a <b>Master's Degree in Educational Technology</b> and a <b>Master's Degree in Educational Psychology & Administration</b>. This dual focus allows him to bridge the gap between complex technical concepts and effective pedagogical delivery.</p>
+    </div>
+  </section>
+
+  <section class="bio-section">
+    <div class="lbl"><span>// recognition · awards + honors</span></div>
+    <ul class="award-list">
+      <li class="award-item">
+        <div class="award-year">2015</div>
+        <div class="award-text">CCSD New Educator of the Year</div>
+      </li>
+      <li class="award-item">
+        <div class="award-year">2022</div>
+        <div class="award-text">×4 Finalist for the Cox Communications Top Tech Award (Education)</div>
+      </li>
+      <li class="award-item">
+        <div class="award-year">2023</div>
+        <div class="award-text">Finalist for The Heart of Education Award</div>
+      </li>
+      <li class="award-item">
+        <div class="award-year">2025</div>
+        <div class="award-text">Cyber.org Educator of the Year (One of 4)</div>
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<p class="note">// 0xFEED · identity module · high-fidelity intel</p>
+
+<script>
+  // subtle full-page glitch shake to match the rest of the dashboard
+  (function () {
+    const root = document.documentElement;
+    function pulse() {
+      if (typeof root.animate === 'function') {
+        root.animate([
+          { filter: 'none', transform: 'translate(0,0)' },
+          { filter: 'hue-rotate(8deg) contrast(1.04)', transform: 'translate(1px,-1px)' },
+          { filter: 'none', transform: 'translate(-1px,0)' },
+          { filter: 'none', transform: 'translate(0,0)' }
+        ], { duration: 320, easing: 'steps(4)' });
+      }
+      setTimeout(pulse, 6000 + Math.random() * 9000);
+    }
+    setTimeout(pulse, 4000);
+  })();
+</script>
+
+</body>
+</html>
