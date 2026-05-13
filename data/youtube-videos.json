@@ -1,5 +1,32 @@
 {
-  "updatedAt": null,
-  "channelUrl": "https://www.youtube.com/",
-  "videos": []
+  "updatedAt": "2026-05-13T02:52:15.746Z",
+  "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
+  "channelTitle": "The 0x Feed!",
+  "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
+  "videos": [
+    {
+      "id": "HMaJyUqFmRw",
+      "title": "FRQ Friday 1 Strategy",
+      "description": "Here is my very FIRST FRQ Friday video. In this one, we cover some strategies that could be effective when attacking the FRQ on the AP Cyber exam.",
+      "publishedAt": "2026-05-08T13:00:06Z",
+      "thumbnail": "https://i.ytimg.com/vi/HMaJyUqFmRw/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=HMaJyUqFmRw"
+    },
+    {
+      "id": "MC11o0Gfz_w",
+      "title": "AP Cyber Unit 1-Topic 1.1: Understanding Social Engineering!",
+      "description": "@0x_feed Presents our very first actual explainer video for AP Cybersecurity, Unit 1, Topic 1.1!",
+      "publishedAt": "2026-05-04T00:55:26Z",
+      "thumbnail": "https://i.ytimg.com/vi/MC11o0Gfz_w/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=MC11o0Gfz_w"
+    },
+    {
+      "id": "b7YBl96dwqQ",
+      "title": "AP Cybersecurity Introduction Video!!",
+      "description": "Here is a perfectly imperfect video that introduces you to me, Robert Speciale M.Ed., and we will walk through the AP Cybersecurity Exam together. I go over the Units,...",
+      "publishedAt": "2026-04-29T14:00:06Z",
+      "thumbnail": "https://i.ytimg.com/vi/b7YBl96dwqQ/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=b7YBl96dwqQ"
+    }
+  ]
 }
