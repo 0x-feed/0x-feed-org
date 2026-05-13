@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>0xFEED // YouTube Content</title>
+  <meta name="description" content="0xFEED YouTube videos, walkthroughs, lessons, and classroom-ready cyber content.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .youtube-copy {
+      color: var(--ink-2);
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 780px;
+      margin: 0;
+    }
+
+    .youtube-copy + .youtube-copy {
+      margin-top: 14px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .video-card {
+      min-width: 0;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      transition: background .18s, transform .18s;
+    }
+
+    .video-card:hover {
+      background: rgba(61,220,151,.045);
+    }
+
+    .video-thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: var(--bg-3);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.001);
+      transition: transform .22s;
+    }
+
+    .video-card:hover .video-thumb img {
+      transform: scale(1.035);
+    }
+
+    .video-play {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 30px;
+      border: 1px solid rgba(61,220,151,.55);
+      background: rgba(8,8,15,.82);
+      color: var(--green);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+    }
+
+    .video-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 18px 18px 16px;
+      min-height: 210px;
+    }
+
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--ink-3);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .video-title {
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.28;
+      letter-spacing: -.01em;
+      margin: 0;
+      transition: color .18s;
+    }
+
+    .video-card:hover .video-title {
+      color: var(--green);
+    }
+
+    .video-desc {
+      color: var(--ink-2);
+      font-size: 13px;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .video-link {
+      margin-top: auto;
+      color: var(--green);
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .video-empty {
+      grid-column: 1 / -1;
+      padding: 34px 24px;
+      background: var(--bg);
+      color: var(--ink-2);
+    }
+
+    .video-empty p {
+      margin: 0 0 16px;
+      max-width: 620px;
+    }
+
+    @media (max-width: 1020px) {
+      .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      .video-grid { grid-template-columns: 1fr; }
+      .video-body { min-height: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-base" aria-hidden="true"></div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="fx-scanbar" aria-hidden="true"></div>
+<div class="fx-crt" aria-hidden="true"></div>
+<div class="fx-vignette" aria-hidden="true"></div>
+<div class="fx-noise" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="pulse" aria-hidden="true"></span>
+    <span class="ox">0x</span><span class="feed">FEED</span>
+  </div>
+  <div class="status" role="status" aria-live="polite">
+    <span><span class="dot" id="video-status-dot"></span><b>VIDEOS:</b>&nbsp;<span id="video-status">loading</span></span>
+    <span><b>UPDATED:</b>&nbsp;<span id="last-updated">pending</span></span>
+  </div>
+  <div class="search">
+    <span aria-hidden="true">/</span>
+    <input id="q" type="search" placeholder="search videos" aria-label="Search videos">
+    <span class="key">/</span>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="titles">
+    <p class="eyebrow">// 02 / YOUTUBE CONTENT</p>
+    <h1>YouTube<span class="gn">.</span>Feed</h1>
+    <p>Walkthroughs, lessons, live streams, and cybersecurity explainers from the 0xFEED channel.</p>
+  </div>
+  <a class="backbtn" href="cyber.html"><span class="ar">&lt;-</span> dashboard</a>
+</section>
+
+<main>
+  <section class="grid">
+    <div class="cell span12">
+      <div class="lbl"><span>// overview / replace this copy with your final page text</span></div>
+      <p class="youtube-copy">
+        This page is ready for your final YouTube page copy. Use this area to introduce the channel, explain who the videos are for, and point students or educators toward the most useful kinds of content.
+      </p>
+      <p class="youtube-copy">
+        The video grid below updates from a static JSON file generated by GitHub Actions, so visitors see your latest uploads without exposing a YouTube API key in the browser.
+      </p>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="cell span12">
+      <div class="lbl">
+        <span>// latest uploads / auto-synced from YouTube</span>
+        <a id="channel-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">open channel -&gt;</a>
+      </div>
+      <div id="video-grid" class="video-grid">
+        <div class="video-empty"><div class="loader">loading videos</div></div>
+      </div>
+      <p class="data-attr">data: YouTube Data API / refreshed by GitHub Actions</p>
+    </div>
+  </section>
+</main>
+
+<p class="note">// 0xFEED / YouTube content / latest uploads sync through GitHub Pages</p>
+
+<script src="assets/feed.js"></script>
+<script>
+(async function init(){
+  OXFEED.bindSearch("q", ".video-card");
+
+  const grid = document.getElementById("video-grid");
+  const status = document.getElementById("video-status");
+  const statusDot = document.getElementById("video-status-dot");
+  const updated = document.getElementById("last-updated");
+  const channelLink = document.getElementById("channel-link");
+
+  function formatDate(iso) {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return "date pending";
+    return d.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  }
+
+  function renderEmpty(message) {
+    grid.innerHTML = `
+      <div class="video-empty">
+        <p>${OXFEED.escapeHtml(message)}</p>
+        <a class="backbtn" href="${OXFEED.escapeHtml(channelLink.href)}" target="_blank" rel="noopener noreferrer">visit YouTube channel <span class="ar">-&gt;</span></a>
+      </div>`;
+  }
+
+  function renderVideo(video, index) {
+    const date = formatDate(video.publishedAt);
+    const desc = video.description || "Open this video on YouTube for the full lesson notes and resources.";
+    return `
+      <a class="video-card" href="${OXFEED.escapeHtml(video.url)}" target="_blank" rel="noopener noreferrer" style="--idx:${index}">
+        <div class="video-thumb">
+          <img src="${OXFEED.escapeHtml(video.thumbnail)}" alt="">
+          <span class="video-play">PLAY</span>
+        </div>
+        <div class="video-body">
+          <div class="video-meta">
+            <span>0x${String(index + 1).padStart(2, "0")}</span>
+            <span>${OXFEED.escapeHtml(date)}</span>
+          </div>
+          <h2 class="video-title">${OXFEED.escapeHtml(video.title)}</h2>
+          <p class="video-desc">${OXFEED.escapeHtml(desc)}</p>
+          <span class="video-link">watch on YouTube -&gt;</span>
+        </div>
+      </a>`;
+  }
+
+  try {
+    const response = await fetch("data/youtube-videos.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("video data unavailable");
+    const data = await response.json();
+    const videos = Array.isArray(data.videos) ? data.videos.filter(v => v && v.url && v.title) : [];
+
+    if (data.channelUrl) {
+      channelLink.href = data.channelUrl;
+    }
+
+    if (data.updatedAt) {
+      updated.textContent = formatDate(data.updatedAt);
+    } else {
+      updated.textContent = "pending";
+    }
+
+    if (!videos.length) {
+      status.textContent = "0 loaded";
+      statusDot.classList.add("err");
+      renderEmpty("No videos are loaded yet. Add YOUTUBE_API_KEY and YOUTUBE_CHANNEL_ID in GitHub, then run the YouTube sync workflow.");
+      return;
+    }
+
+    status.textContent = videos.length + " loaded";
+    grid.innerHTML = videos.map(renderVideo).join("");
+  } catch (error) {
+    console.warn("[0xFEED] YouTube video load failed:", error.message);
+    status.textContent = "offline";
+    statusDot.classList.add("err");
+    updated.textContent = "unavailable";
+    renderEmpty("Video data could not be loaded. The YouTube channel link is still available.");
+  }
+})();
+</script>
+
+</body>
+</html>
