@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>0xFEED // Gallery</title>
+  <meta name="description" content="0xFEED static image gallery loaded from pre-uploaded files.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="pulse" aria-hidden="true"></span>
+    <span class="ox">0x</span><span class="feed">FEED</span>
+  </div>
+  <div class="status" role="status" aria-live="polite">
+    <span><span class="dot"></span><b>GALLERY:</b>&nbsp;<span id="gallery-status">loading</span></span>
+    <span><b>SOURCE:</b>&nbsp;<span>assets/gallery/gallery.json</span></span>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="titles">
+    <p class="eyebrow">// 04 · STATIC IMAGE ARCHIVE</p>
+    <h1>Gallery<span class="gn">.</span>View</h1>
+    <p>Images are preloaded from the site repository. Add files to the gallery folder, list them in the manifest, and GitHub Pages serves them here.</p>
+  </div>
+  <a class="backbtn" href="cyber.html"><span class="ar">←</span> dashboard</a>
+</section>
+
+<main>
+  <section class="gallery-shell" aria-label="Static image gallery">
+    <div class="gallery-stage">
+      <div class="gallery-meta">
+        <span>// selected image</span>
+        <span><strong id="gallery-count">00/00</strong></span>
+      </div>
+      <div class="gallery-view" id="gallery-view">
+        <div class="gallery-empty">
+          <h2>No gallery images listed yet.</h2>
+          <p>Upload images into <code>assets/gallery/</code>, then add them to <code>assets/gallery/gallery.json</code>.</p>
+          <code>[
+  {
+    "src": "assets/gallery/image-01.jpg",
+    "title": "Image 1",
+    "alt": "Short description of image 1"
+  }
+]</code>
+        </div>
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-btn" id="prev-btn" type="button" disabled>prev</button>
+        <div class="gallery-title">
+          <h2 id="gallery-title">Manifest empty</h2>
+          <p id="gallery-caption">No upload button is shown to visitors.</p>
+        </div>
+        <button class="gallery-btn" id="next-btn" type="button" disabled>next</button>
+      </div>
+    </div>
+    <aside class="gallery-rail" aria-label="Gallery thumbnails">
+      <div class="lbl"><span>// thumbnails</span><span id="gallery-total">0 files</span></div>
+      <div class="gallery-thumbs" id="gallery-thumbs"></div>
+    </aside>
+  </section>
+</main>
+
+<p class="note">// 0xFEED · static gallery · GitHub Pages ready</p>
+
+<script>
+(function () {
+  const status = document.getElementById("gallery-status");
+  const count = document.getElementById("gallery-count");
+  const total = document.getElementById("gallery-total");
+  const view = document.getElementById("gallery-view");
+  const title = document.getElementById("gallery-title");
+  const caption = document.getElementById("gallery-caption");
+  const thumbs = document.getElementById("gallery-thumbs");
+  const prev = document.getElementById("prev-btn");
+  const next = document.getElementById("next-btn");
+  let items = [];
+  let index = 0;
+
+  function pad(n) {
+    return String(n).padStart(2, "0");
+  }
+
+  function normalize(raw) {
+    if (!Array.isArray(raw)) return [];
+    return raw
+      .map(item => typeof item === "string" ? { src: item } : (item || {}))
+      .filter(item => ["src", "file", "filename", "path", "url"].some(key => typeof item[key] === "string" && item[key].trim()))
+      .map((item, i) => {
+        const rawSrc = (item.src || item.file || item.filename || item.path || item.url).trim().replace(/\\/g, "/");
+        const src = /^(https?:|data:|assets\/|\/)/i.test(rawSrc) ? rawSrc : "assets/gallery/" + rawSrc.replace(/^\.?\//, "");
+        const fallback = src.split("/").pop() || `Image ${i + 1}`;
+        return {
+          src,
+          title: item.title || fallback,
+          alt: item.alt || item.title || fallback,
+          caption: item.caption || ""
+        };
+      });
+  }
+
+  function createThumb(item, i) {
+    const button = document.createElement("button");
+    button.className = "gallery-thumb";
+    button.type = "button";
+    button.dataset.index = String(i);
+    button.setAttribute("aria-current", "false");
+
+    const img = document.createElement("img");
+    img.src = item.src;
+    img.alt = "";
+
+    const label = document.createElement("span");
+    label.textContent = item.title;
+
+    const number = document.createElement("small");
+    number.textContent = pad(i + 1);
+    label.appendChild(number);
+
+    button.append(img, label);
+    return button;
+  }
+
+  function render() {
+    if (!items.length) {
+      status.textContent = "empty";
+      count.textContent = "00/00";
+      total.textContent = "0 files";
+      return;
+    }
+
+    const item = items[index];
+    status.textContent = "ready";
+    count.textContent = `${pad(index + 1)}/${pad(items.length)}`;
+    total.textContent = `${items.length} file${items.length === 1 ? "" : "s"}`;
+    title.textContent = item.title;
+    caption.textContent = item.caption || item.src;
+    prev.disabled = items.length < 2;
+    next.disabled = items.length < 2;
+    view.innerHTML = "";
+
+    const img = document.createElement("img");
+    img.src = item.src;
+    img.alt = item.alt;
+    img.loading = "eager";
+    img.onerror = function () {
+      view.innerHTML = "";
+      const empty = document.createElement("div");
+      empty.className = "gallery-empty";
+      const heading = document.createElement("h2");
+      heading.textContent = "Image path not found.";
+      const message = document.createElement("p");
+      message.innerHTML = 'Check the file name and path in <code>assets/gallery/gallery.json</code>.';
+      const path = document.createElement("code");
+      path.textContent = item.src;
+      empty.append(heading, message, path);
+      view.appendChild(empty);
+    };
+    view.appendChild(img);
+
+    Array.from(thumbs.children).forEach((button, i) => {
+      button.setAttribute("aria-current", i === index ? "true" : "false");
+    });
+  }
+
+  function go(delta) {
+    if (!items.length) return;
+    index = (index + delta + items.length) % items.length;
+    render();
+  }
+
+  fetch("assets/gallery/gallery.json", { cache: "no-store" })
+    .then(response => {
+      if (!response.ok) throw new Error("manifest unavailable");
+      return response.json();
+    })
+    .then(raw => {
+      items = normalize(raw);
+      thumbs.innerHTML = "";
+      items.forEach((item, i) => thumbs.appendChild(createThumb(item, i)));
+      thumbs.addEventListener("click", event => {
+        const button = event.target.closest(".gallery-thumb");
+        if (!button) return;
+        index = Number(button.dataset.index);
+        render();
+      });
+      render();
+    })
+    .catch(() => {
+      status.textContent = "manifest error";
+      title.textContent = "Manifest not found";
+      caption.textContent = window.location.protocol === "file:"
+        ? "Open this page through the local server so gallery.json can load."
+        : "Create assets/gallery/gallery.json and upload it with the page.";
+    });
+
+  prev.addEventListener("click", () => go(-1));
+  next.addEventListener("click", () => go(1));
+  document.addEventListener("keydown", event => {
+    if (event.key === "ArrowLeft") go(-1);
+    if (event.key === "ArrowRight") go(1);
+  });
+})();
+</script>
+
+</body>
+</html>
