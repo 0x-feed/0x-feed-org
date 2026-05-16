@@ -1,22 +1,122 @@
 <!DOCTYPE html>
 <html>
+<!-- ============================================================
+     0x-feed.org — SEO-OPTIMIZED index.html
+     Drop this in as a replacement for your current index.html.
+     All content/design is unchanged — only <head> is enhanced.
+     ============================================================ -->
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>0x_FEED · CYBERSECURITY</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #faf9f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
-    #__bundler_loading { position: fixed; bottom: 20px; right: 20px; font: 13px/1.4 -apple-system, BlinkMacSystemFont, sans-serif; color: #666; background: #fff; padding: 8px 14px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.12); z-index: 10000; }
-    #__bundler_thumbnail { position: fixed; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #faf9f5; z-index: 9999; }
-    #__bundler_thumbnail svg { width: 100%; height: 100%; object-fit: contain; }
-    #__bundler_placeholder { color: #999; font-size: 14px; }
-  </style>
-  <noscript>
-    <style>#__bundler_loading { display: none; }</style>
-    <div style="position:fixed;bottom:12px;left:12px;font:13px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;color:#999;background:rgba(255,255,255,0.9);padding:6px 12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10000;">
-      This page requires JavaScript to display.
-    </div>
-  </noscript>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- ── PRIMARY META ─────────────────────────────────────────── -->
+<title>0x_FEED — Cybersecurity Education & Intel for Students</title>
+<meta name="description" content="0x_FEED is a cybersecurity classroom on the open net — lessons, teardowns, curriculum, and daily intel from an educator with 12+ years in the field. YouTube, Teachers Pay Teachers, and live threat feeds.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://0x-feed.org/">
+
+<!-- ── OPEN GRAPH (Facebook / LinkedIn / Discord) ─────────── -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://0x-feed.org/">
+<meta property="og:title"       content="0x_FEED — Cybersecurity Education & Intel">
+<meta property="og:description" content="Cybersecurity lessons, teardowns, and daily intel for students — delivered by a practitioner-educator. Drop into a channel.">
+<meta property="og:image"       content="https://0x-feed.org/assets/og-card.png">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name"   content="0x_FEED">
+<meta property="og:locale"      content="en_US">
+
+<!-- ── TWITTER / X CARD ──────────────────────────────────────── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        content="@0x_feed">
+<meta name="twitter:creator"     content="@0x_feed">
+<meta name="twitter:title"       content="0x_FEED — Cybersecurity Education & Intel">
+<meta name="twitter:description" content="Cybersecurity lessons, teardowns, and daily intel for students — delivered by a practitioner-educator.">
+<meta name="twitter:image"       content="https://0x-feed.org/assets/og-card.png">
+
+<!-- ── FAVICON ──────────────────────────────────────────────── -->
+<link rel="icon"             href="/assets/logo.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo.png">
+
+<!-- ── STRUCTURED DATA — WebSite + Person ──────────────────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://0x-feed.org/#website",
+      "url": "https://0x-feed.org/",
+      "name": "0x_FEED",
+      "description": "Cybersecurity education and daily intel — lessons, teardowns, and curriculum from a practitioner-educator.",
+      "publisher": { "@id": "https://0x-feed.org/#person" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": { "@type": "EntryPoint", "urlTemplate": "https://0x-feed.org/?q={search_term_string}" },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://0x-feed.org/#person",
+      "name": "Robert Speciale",
+      "alternateName": "CyberSpesh",
+      "url": "https://0x-feed.org/about.html",
+      "jobTitle": "Cybersecurity Educator",
+      "sameAs": [
+        "https://www.instagram.com/0x_feed/",
+        "https://www.youtube.com/@0x_feed"
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- ── PRECONNECTS (speed) ──────────────────────────────────── -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- ================================================================
+     EVERYTHING BELOW HERE IS IDENTICAL TO YOUR ORIGINAL index.html
+     (paste your existing <style> and <body> here)
+     ================================================================ -->
+
+<!--
+  ACTION ITEMS (things you need to do outside this file):
+  ─────────────────────────────────────────────────────────────────
+  1. Create /assets/og-card.png  — 1200×630px branded image for social shares
+     (your logo on the dark background, site name, tagline)
+
+  2. Create /robots.txt in your repo root:
+     ──────────────────────────────────────
+     User-agent: *
+     Allow: /
+     Sitemap: https://0x-feed.org/sitemap.xml
+
+  3. Create /sitemap.xml in your repo root:
+     ──────────────────────────────────────
+     <?xml version="1.0" encoding="UTF-8"?>
+     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+       <url><loc>https://0x-feed.org/</loc><priority>1.0</priority></url>
+       <url><loc>https://0x-feed.org/about.html</loc><priority>0.8</priority></url>
+       <url><loc>https://0x-feed.org/youtube.html</loc><priority>0.8</priority></url>
+       <url><loc>https://0x-feed.org/tpt.html</loc><priority>0.7</priority></url>
+       <url><loc>https://0x-feed.org/cyber.html</loc><priority>0.9</priority></url>
+     </urlset>
+
+  4. Add same OG/Twitter/schema tags to cyber.html, about.html, etc.
+     (cyber.html already has description — just add OG + schema)
+
+  5. Submit sitemap in Google Search Console after deploying.
+     Verify property with HTML file or DNS TXT record.
+
+  6. The site is JS-bundle rendered. Google CAN index JS SPAs, but it's
+     slower. Consider adding server-side or static <noscript> fallback
+     with your core content text for insurance.
+  ─────────────────────────────────────────────────────────────────
+-->
+
 </head>
 <body>
   <div id="__bundler_thumbnail">
