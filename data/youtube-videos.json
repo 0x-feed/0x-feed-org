@@ -1,9 +1,33 @@
 {
-  "updatedAt": "2026-05-18T18:24:30.151Z",
+  "updatedAt": "2026-05-19T18:29:21.526Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "EQNBIC7SYJ4",
+      "title": "Urgency Takes You Out of Your Thinking Loop!",
+      "description": "Social engineering employs psychological tactics that try and get people to stop thinking logically and calmly in an effort",
+      "publishedAt": "2026-05-19T18:14:03Z",
+      "thumbnail": "https://i.ytimg.com/vi/EQNBIC7SYJ4/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=EQNBIC7SYJ4"
+    },
+    {
+      "id": "eNnjt6Y21xo",
+      "title": "AP Cybersecurity Unit 1: Topic 1.1 for Teachers!",
+      "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
+      "publishedAt": "2026-05-19T02:36:06Z",
+      "thumbnail": "https://i.ytimg.com/vi/eNnjt6Y21xo/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=eNnjt6Y21xo"
+    },
+    {
+      "id": "eEAgE_ySab0",
+      "title": "Quick Short to Say Hello!",
+      "description": "Hey everyone — welcome to the channel! If you’re new here, I’m really glad you’re here.",
+      "publishedAt": "2026-05-18T18:47:56Z",
+      "thumbnail": "https://i.ytimg.com/vi/eEAgE_ySab0/sddefault.jpg",
+      "url": "https://www.youtube.com/watch?v=eEAgE_ySab0"
+    },
     {
       "id": "oYMhytgJoMw",
       "title": "Phishing: The Human Trick!",
