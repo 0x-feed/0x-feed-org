@@ -1,9 +1,25 @@
 {
-  "updatedAt": "2026-05-19T18:29:21.526Z",
+  "updatedAt": "2026-05-20T20:32:23.092Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "n6DR2o2uAz8",
+      "title": "Don't Let Criminals Shop at Best Buy! 😂",
+      "description": "Financial and identity theft are more common than ever—and the tactics are smarter than you think.",
+      "publishedAt": "2026-05-20T14:25:18Z",
+      "thumbnail": "https://i.ytimg.com/vi/n6DR2o2uAz8/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=n6DR2o2uAz8"
+    },
+    {
+      "id": "2XIBM3wfisg",
+      "title": "Social Engineering is Like Sales Tactics!",
+      "description": "Most people think social engineering is complicated. It’s not. It’s psychology in action.",
+      "publishedAt": "2026-05-19T20:28:29Z",
+      "thumbnail": "https://i.ytimg.com/vi/2XIBM3wfisg/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=2XIBM3wfisg"
+    },
     {
       "id": "EQNBIC7SYJ4",
       "title": "Urgency Takes You Out of Your Thinking Loop!",
@@ -59,14 +75,6 @@
       "publishedAt": "2026-05-04T00:55:26Z",
       "thumbnail": "https://i.ytimg.com/vi/MC11o0Gfz_w/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=MC11o0Gfz_w"
-    },
-    {
-      "id": "b7YBl96dwqQ",
-      "title": "AP Cybersecurity Introduction Video!!",
-      "description": "Here is a perfectly imperfect video that introduces you to me, Robert Speciale M.Ed., and we will walk through the AP Cybersecurity Exam together. I go over the Units,...",
-      "publishedAt": "2026-04-29T14:00:06Z",
-      "thumbnail": "https://i.ytimg.com/vi/b7YBl96dwqQ/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=b7YBl96dwqQ"
     }
   ]
 }
