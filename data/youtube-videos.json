@@ -1,9 +1,33 @@
 {
-  "updatedAt": "2026-05-21T18:30:54.183Z",
+  "updatedAt": "2026-05-22T18:25:17.261Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "2fIt1nLhxsg",
+      "title": "Think \"Apple11?\" is a secure password? Think Again!",
+      "description": "Think “Apple11?” is a strong password? Think again.",
+      "publishedAt": "2026-05-22T18:24:28Z",
+      "thumbnail": "https://i.ytimg.com/vi/2fIt1nLhxsg/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=2fIt1nLhxsg"
+    },
+    {
+      "id": "0Q_OkCRDkek",
+      "title": "My new video",
+      "description": "Still using short passwords with symbols and birthdates? It’s time to level up.",
+      "publishedAt": "2026-05-22T15:01:18Z",
+      "thumbnail": "https://i.ytimg.com/vi/0Q_OkCRDkek/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=0Q_OkCRDkek"
+    },
+    {
+      "id": "hn_i3zLQBjs",
+      "title": "AP Cybersecurity Unit 1, Topic 1.2: Suspicious Website Logins!",
+      "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
+      "publishedAt": "2026-05-22T02:38:41Z",
+      "thumbnail": "https://i.ytimg.com/vi/hn_i3zLQBjs/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=hn_i3zLQBjs"
+    },
     {
       "id": "n6DR2o2uAz8",
       "title": "Don't Let Criminals Shop at Best Buy! 😂",
@@ -51,30 +75,6 @@
       "publishedAt": "2026-05-16T01:22:32Z",
       "thumbnail": "https://i.ytimg.com/vi/oYMhytgJoMw/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=oYMhytgJoMw"
-    },
-    {
-      "id": "iyGXi-xqxhQ",
-      "title": "AP Cyber Unit 1 Topic 1.1: Exploring Phishing!!",
-      "description": "‪The @0x_feed‬ presents the world of Phishing! This is a key concept in Unit 1: Topic 1.1",
-      "publishedAt": "2026-05-15T04:08:51Z",
-      "thumbnail": "https://i.ytimg.com/vi/iyGXi-xqxhQ/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=iyGXi-xqxhQ"
-    },
-    {
-      "id": "HMaJyUqFmRw",
-      "title": "FRQ Friday 1 Strategy",
-      "description": "Here is my very FIRST FRQ Friday video. In this one, we cover some strategies that could be effective when attacking the FRQ on the AP Cyber exam.",
-      "publishedAt": "2026-05-08T13:00:06Z",
-      "thumbnail": "https://i.ytimg.com/vi/HMaJyUqFmRw/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=HMaJyUqFmRw"
-    },
-    {
-      "id": "MC11o0Gfz_w",
-      "title": "AP Cyber Unit 1-Topic 1.1: Understanding Social Engineering!",
-      "description": "@0x_feed Presents our very first actual explainer video for AP Cybersecurity, Unit 1, Topic 1.1!",
-      "publishedAt": "2026-05-04T00:55:26Z",
-      "thumbnail": "https://i.ytimg.com/vi/MC11o0Gfz_w/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=MC11o0Gfz_w"
     }
   ]
 }
