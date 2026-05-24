@@ -1,9 +1,25 @@
 {
-  "updatedAt": "2026-05-23T15:51:17.679Z",
+  "updatedAt": "2026-05-24T15:50:46.898Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "b3p1dcPyFtY",
+      "title": "Password Cracking Isn't Manual!",
+      "description": "Most attackers don’t sit there guessing your password one try at a time.",
+      "publishedAt": "2026-05-23T20:20:43Z",
+      "thumbnail": "https://i.ytimg.com/vi/b3p1dcPyFtY/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=b3p1dcPyFtY"
+    },
+    {
+      "id": "XrAbglMsHQ8",
+      "title": "Technology News Incoming!",
+      "description": "Big update! I’m starting a brand-new playlist focused on Cyber, AI, and Tech News.",
+      "publishedAt": "2026-05-23T19:16:33Z",
+      "thumbnail": "https://i.ytimg.com/vi/XrAbglMsHQ8/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=XrAbglMsHQ8"
+    },
     {
       "id": "2fIt1nLhxsg",
       "title": "Think \"Apple11?\" is a secure password? Think Again!",
@@ -59,22 +75,6 @@
       "publishedAt": "2026-05-19T02:36:06Z",
       "thumbnail": "https://i.ytimg.com/vi/eNnjt6Y21xo/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=eNnjt6Y21xo"
-    },
-    {
-      "id": "eEAgE_ySab0",
-      "title": "Quick Short to Say Hello!",
-      "description": "Hey everyone — welcome to the channel! If you’re new here, I’m really glad you’re here.",
-      "publishedAt": "2026-05-18T18:47:56Z",
-      "thumbnail": "https://i.ytimg.com/vi/eEAgE_ySab0/sddefault.jpg",
-      "url": "https://www.youtube.com/watch?v=eEAgE_ySab0"
-    },
-    {
-      "id": "oYMhytgJoMw",
-      "title": "Phishing: The Human Trick!",
-      "description": "Phishing: It's the human trick. Phishing and it's \"cousins\" all target the weakest link: humans. Through social engineering tactics like intimidation, scarcity and many...",
-      "publishedAt": "2026-05-16T01:22:32Z",
-      "thumbnail": "https://i.ytimg.com/vi/oYMhytgJoMw/hqdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=oYMhytgJoMw"
     }
   ]
 }
