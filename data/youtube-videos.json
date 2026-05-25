@@ -1,9 +1,17 @@
 {
-  "updatedAt": "2026-05-24T15:50:46.898Z",
+  "updatedAt": "2026-05-25T18:13:35.987Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "KNDZ4fz19Ok",
+      "title": "Some Cyber/AI/Tech News, Episode 1!",
+      "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
+      "publishedAt": "2026-05-25T02:57:30Z",
+      "thumbnail": "https://i.ytimg.com/vi/KNDZ4fz19Ok/hqdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=KNDZ4fz19Ok"
+    },
     {
       "id": "b3p1dcPyFtY",
       "title": "Password Cracking Isn't Manual!",
@@ -67,14 +75,6 @@
       "publishedAt": "2026-05-19T18:14:03Z",
       "thumbnail": "https://i.ytimg.com/vi/EQNBIC7SYJ4/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=EQNBIC7SYJ4"
-    },
-    {
-      "id": "eNnjt6Y21xo",
-      "title": "AP Cybersecurity Unit 1: Topic 1.1 for Teachers!",
-      "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
-      "publishedAt": "2026-05-19T02:36:06Z",
-      "thumbnail": "https://i.ytimg.com/vi/eNnjt6Y21xo/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=eNnjt6Y21xo"
     }
   ]
 }
