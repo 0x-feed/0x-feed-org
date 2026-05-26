@@ -1,9 +1,25 @@
 {
-  "updatedAt": "2026-05-25T18:13:35.987Z",
+  "updatedAt": "2026-05-26T19:48:25.779Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "bbAxZjxhyFY",
+      "title": "My first news segment!",
+      "description": "Big Tech is about to drop 700 BILLION dollars on AI infrastructure and some cities are already saying \"not in our backyard\"",
+      "publishedAt": "2026-05-25T21:03:26Z",
+      "thumbnail": "https://i.ytimg.com/vi/bbAxZjxhyFY/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=bbAxZjxhyFY"
+    },
+    {
+      "id": "JsX6VvOaA4M",
+      "title": "Job Loss or Growth?",
+      "description": "Jobs are changing fast. And yes, some jobs will disappear.",
+      "publishedAt": "2026-05-25T21:03:17Z",
+      "thumbnail": "https://i.ytimg.com/vi/JsX6VvOaA4M/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=JsX6VvOaA4M"
+    },
     {
       "id": "KNDZ4fz19Ok",
       "title": "Some Cyber/AI/Tech News, Episode 1!",
@@ -59,22 +75,6 @@
       "publishedAt": "2026-05-20T14:25:18Z",
       "thumbnail": "https://i.ytimg.com/vi/n6DR2o2uAz8/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=n6DR2o2uAz8"
-    },
-    {
-      "id": "2XIBM3wfisg",
-      "title": "Social Engineering is Like Sales Tactics!",
-      "description": "Most people think social engineering is complicated. It’s not. It’s psychology in action.",
-      "publishedAt": "2026-05-19T20:28:29Z",
-      "thumbnail": "https://i.ytimg.com/vi/2XIBM3wfisg/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=2XIBM3wfisg"
-    },
-    {
-      "id": "EQNBIC7SYJ4",
-      "title": "Urgency Takes You Out of Your Thinking Loop!",
-      "description": "Social engineering employs psychological tactics that try and get people to stop thinking logically and calmly in an effort",
-      "publishedAt": "2026-05-19T18:14:03Z",
-      "thumbnail": "https://i.ytimg.com/vi/EQNBIC7SYJ4/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=EQNBIC7SYJ4"
     }
   ]
 }
