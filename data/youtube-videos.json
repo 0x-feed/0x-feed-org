@@ -1,9 +1,17 @@
 {
-  "updatedAt": "2026-06-02T22:09:12.704Z",
+  "updatedAt": "2026-06-03T22:14:33.179Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "s4N5oQUuYfw",
+      "title": "Quick channel update whilst taking a break with the family!",
+      "description": "Quick YouTube Short while I enjoy the end of the school year with the family, and getting some stuff done around the house.",
+      "publishedAt": "2026-06-03T15:06:29Z",
+      "thumbnail": "https://i.ytimg.com/vi/s4N5oQUuYfw/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=s4N5oQUuYfw"
+    },
     {
       "id": "bbAxZjxhyFY",
       "title": "My first news segment!",
@@ -67,14 +75,6 @@
       "publishedAt": "2026-05-22T02:38:41Z",
       "thumbnail": "https://i.ytimg.com/vi/hn_i3zLQBjs/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=hn_i3zLQBjs"
-    },
-    {
-      "id": "n6DR2o2uAz8",
-      "title": "Don't Let Criminals Shop at Best Buy! 😂",
-      "description": "Financial and identity theft are more common than ever—and the tactics are smarter than you think.",
-      "publishedAt": "2026-05-20T14:25:18Z",
-      "thumbnail": "https://i.ytimg.com/vi/n6DR2o2uAz8/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=n6DR2o2uAz8"
     }
   ]
 }
