@@ -1,9 +1,25 @@
 {
-  "updatedAt": "2026-06-24T15:09:06.191Z",
+  "updatedAt": "2026-06-25T15:15:37.859Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "RmLwgPEv_Z8",
+      "title": "VPNs Aren’t Instant Privacy",
+      "description": "Most people think a VPN makes them anonymous.",
+      "publishedAt": "2026-06-25T13:38:46Z",
+      "thumbnail": "https://i.ytimg.com/vi/RmLwgPEv_Z8/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=RmLwgPEv_Z8"
+    },
+    {
+      "id": "IhOtdkmvr14",
+      "title": "Student Video 3",
+      "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
+      "publishedAt": "2026-06-25T13:00:06Z",
+      "thumbnail": "https://i.ytimg.com/vi/IhOtdkmvr14/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=IhOtdkmvr14"
+    },
     {
       "id": "s4N5oQUuYfw",
       "title": "Quick channel update whilst taking a break with the family!",
@@ -59,22 +75,6 @@
       "publishedAt": "2026-05-22T18:24:28Z",
       "thumbnail": "https://i.ytimg.com/vi/2fIt1nLhxsg/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=2fIt1nLhxsg"
-    },
-    {
-      "id": "0Q_OkCRDkek",
-      "title": "My new video",
-      "description": "Still using short passwords with symbols and birthdates? It’s time to level up.",
-      "publishedAt": "2026-05-22T15:01:18Z",
-      "thumbnail": "https://i.ytimg.com/vi/0Q_OkCRDkek/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=0Q_OkCRDkek"
-    },
-    {
-      "id": "hn_i3zLQBjs",
-      "title": "AP Cybersecurity Unit 1, Topic 1.2: Suspicious Website Logins!",
-      "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
-      "publishedAt": "2026-05-22T02:38:41Z",
-      "thumbnail": "https://i.ytimg.com/vi/hn_i3zLQBjs/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=hn_i3zLQBjs"
     }
   ]
 }
