@@ -1,9 +1,25 @@
 {
-  "updatedAt": "2026-06-28T14:16:40.493Z",
+  "updatedAt": "2026-06-29T16:11:19.337Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "7JyWKNkssIA",
+      "title": "Cybersecurity Is Friction",
+      "description": "Most attackers don't need an easy win.",
+      "publishedAt": "2026-06-28T22:06:12Z",
+      "thumbnail": "https://i.ytimg.com/vi/7JyWKNkssIA/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=7JyWKNkssIA"
+    },
+    {
+      "id": "L93E0WRCLo4",
+      "title": "Why Threat Actors Hit Public Networks",
+      "description": "Public networks aren't random hunting grounds.",
+      "publishedAt": "2026-06-28T15:13:58Z",
+      "thumbnail": "https://i.ytimg.com/vi/L93E0WRCLo4/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=L93E0WRCLo4"
+    },
     {
       "id": "XJP6IQQ9L2E",
       "title": "Protecting Against Public WIFI Attacks!",
@@ -59,22 +75,6 @@
       "publishedAt": "2026-05-25T02:57:30Z",
       "thumbnail": "https://i.ytimg.com/vi/KNDZ4fz19Ok/hqdefault.jpg",
       "url": "https://www.youtube.com/watch?v=KNDZ4fz19Ok"
-    },
-    {
-      "id": "b3p1dcPyFtY",
-      "title": "Password Cracking Isn't Manual!",
-      "description": "Most attackers don’t sit there guessing your password one try at a time.",
-      "publishedAt": "2026-05-23T20:20:43Z",
-      "thumbnail": "https://i.ytimg.com/vi/b3p1dcPyFtY/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=b3p1dcPyFtY"
-    },
-    {
-      "id": "XrAbglMsHQ8",
-      "title": "Technology News Incoming!",
-      "description": "Big update! I’m starting a brand-new playlist focused on Cyber, AI, and Tech News.",
-      "publishedAt": "2026-05-23T19:16:33Z",
-      "thumbnail": "https://i.ytimg.com/vi/XrAbglMsHQ8/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=XrAbglMsHQ8"
     }
   ]
 }
