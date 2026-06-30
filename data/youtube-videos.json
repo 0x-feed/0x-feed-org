@@ -1,9 +1,25 @@
 {
-  "updatedAt": "2026-06-29T16:11:19.337Z",
+  "updatedAt": "2026-06-30T14:43:39.411Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "kFO7Tr4BxWU",
+      "title": "Student Video 4",
+      "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
+      "publishedAt": "2026-06-30T12:00:06Z",
+      "thumbnail": "https://i.ytimg.com/vi/kFO7Tr4BxWU/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=kFO7Tr4BxWU"
+    },
+    {
+      "id": "xwt6jfEJtbY",
+      "title": "Check the Data Before the Wi-Fi",
+      "description": "Public Wi-Fi isn't the problem.",
+      "publishedAt": "2026-06-30T03:46:40Z",
+      "thumbnail": "https://i.ytimg.com/vi/xwt6jfEJtbY/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=xwt6jfEJtbY"
+    },
     {
       "id": "7JyWKNkssIA",
       "title": "Cybersecurity Is Friction",
@@ -59,22 +75,6 @@
       "publishedAt": "2026-05-25T21:03:26Z",
       "thumbnail": "https://i.ytimg.com/vi/bbAxZjxhyFY/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=bbAxZjxhyFY"
-    },
-    {
-      "id": "JsX6VvOaA4M",
-      "title": "Job Loss or Growth?",
-      "description": "Jobs are changing fast. And yes, some jobs will disappear.",
-      "publishedAt": "2026-05-25T21:03:17Z",
-      "thumbnail": "https://i.ytimg.com/vi/JsX6VvOaA4M/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=JsX6VvOaA4M"
-    },
-    {
-      "id": "KNDZ4fz19Ok",
-      "title": "Some Cyber/AI/Tech News, Episode 1!",
-      "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
-      "publishedAt": "2026-05-25T02:57:30Z",
-      "thumbnail": "https://i.ytimg.com/vi/KNDZ4fz19Ok/hqdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=KNDZ4fz19Ok"
     }
   ]
 }
