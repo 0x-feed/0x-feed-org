@@ -1,12 +1,20 @@
 {
-  "updatedAt": "2026-06-30T14:43:39.411Z",
+  "updatedAt": "2026-07-01T15:12:36.343Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
     {
+      "id": "NSLEbFhjXXI",
+      "title": "Use a Secret Word to Stop AI Voice Scams",
+      "description": "A 2 AM “emergency” call is not proof it’s your family.",
+      "publishedAt": "2026-06-30T20:14:44Z",
+      "thumbnail": "https://i.ytimg.com/vi/NSLEbFhjXXI/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=NSLEbFhjXXI"
+    },
+    {
       "id": "kFO7Tr4BxWU",
-      "title": "Student Video 4",
+      "title": "AP Cybersecurity 1.4: AI Attacks Decoded",
       "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
       "publishedAt": "2026-06-30T12:00:06Z",
       "thumbnail": "https://i.ytimg.com/vi/kFO7Tr4BxWU/maxresdefault.jpg",
@@ -22,7 +30,7 @@
     },
     {
       "id": "7JyWKNkssIA",
-      "title": "Cybersecurity Is Friction",
+      "title": "Perfect Security Doesn't Exist (So Do This) #CyberSecurity #InfoSec #Defense",
       "description": "Most attackers don't need an easy win.",
       "publishedAt": "2026-06-28T22:06:12Z",
       "thumbnail": "https://i.ytimg.com/vi/7JyWKNkssIA/maxresdefault.jpg",
@@ -67,14 +75,6 @@
       "publishedAt": "2026-06-03T15:06:29Z",
       "thumbnail": "https://i.ytimg.com/vi/s4N5oQUuYfw/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=s4N5oQUuYfw"
-    },
-    {
-      "id": "bbAxZjxhyFY",
-      "title": "My first news segment!",
-      "description": "Big Tech is about to drop 700 BILLION dollars on AI infrastructure and some cities are already saying \"not in our backyard\"",
-      "publishedAt": "2026-05-25T21:03:26Z",
-      "thumbnail": "https://i.ytimg.com/vi/bbAxZjxhyFY/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=bbAxZjxhyFY"
     }
   ]
 }
