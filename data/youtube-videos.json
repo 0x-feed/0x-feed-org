@@ -1,9 +1,17 @@
 {
-  "updatedAt": "2026-07-01T15:12:36.343Z",
+  "updatedAt": "2026-07-02T14:29:09.270Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "rk_ybrbtB6A",
+      "title": "Zero Trust, Verify Everything!",
+      "description": "“Trust but verify” is dead.",
+      "publishedAt": "2026-07-01T19:05:41Z",
+      "thumbnail": "https://i.ytimg.com/vi/rk_ybrbtB6A/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=rk_ybrbtB6A"
+    },
     {
       "id": "NSLEbFhjXXI",
       "title": "Use a Secret Word to Stop AI Voice Scams",
@@ -67,14 +75,6 @@
       "publishedAt": "2026-06-25T13:00:06Z",
       "thumbnail": "https://i.ytimg.com/vi/IhOtdkmvr14/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=IhOtdkmvr14"
-    },
-    {
-      "id": "s4N5oQUuYfw",
-      "title": "Quick channel update whilst taking a break with the family!",
-      "description": "Quick YouTube Short while I enjoy the end of the school year with the family, and getting some stuff done around the house.",
-      "publishedAt": "2026-06-03T15:06:29Z",
-      "thumbnail": "https://i.ytimg.com/vi/s4N5oQUuYfw/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=s4N5oQUuYfw"
     }
   ]
 }
