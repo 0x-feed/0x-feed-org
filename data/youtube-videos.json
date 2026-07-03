@@ -1,9 +1,17 @@
 {
-  "updatedAt": "2026-07-02T14:29:09.270Z",
+  "updatedAt": "2026-07-03T14:32:32.590Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "Foop1NdhJvk",
+      "title": "AI Changed Phishing Detection",
+      "description": "Bad grammar is not your phishing detector anymore.",
+      "publishedAt": "2026-07-02T21:43:14Z",
+      "thumbnail": "https://i.ytimg.com/vi/Foop1NdhJvk/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=Foop1NdhJvk"
+    },
     {
       "id": "rk_ybrbtB6A",
       "title": "Zero Trust, Verify Everything!",
@@ -67,14 +75,6 @@
       "publishedAt": "2026-06-25T13:38:46Z",
       "thumbnail": "https://i.ytimg.com/vi/RmLwgPEv_Z8/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=RmLwgPEv_Z8"
-    },
-    {
-      "id": "IhOtdkmvr14",
-      "title": "Unit 1.3 Cybersecurity Topics Simplified",
-      "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
-      "publishedAt": "2026-06-25T13:00:06Z",
-      "thumbnail": "https://i.ytimg.com/vi/IhOtdkmvr14/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=IhOtdkmvr14"
     }
   ]
 }
