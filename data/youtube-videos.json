@@ -1,9 +1,17 @@
 {
-  "updatedAt": "2026-07-13T15:11:47.012Z",
+  "updatedAt": "2026-07-14T14:14:24.281Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "pEU5x3v41sQ",
+      "title": "My Teachers Pay Teachers Explainer Video!",
+      "description": "Hello all! This is a video that I am using to advertise my Teachers Pay Teacher's storefront, where I made a full curriculum for the AP Cybersecurity exam. In the video...",
+      "publishedAt": "2026-07-14T03:14:17Z",
+      "thumbnail": "https://i.ytimg.com/vi/pEU5x3v41sQ/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=pEU5x3v41sQ"
+    },
     {
       "id": "Foop1NdhJvk",
       "title": "AI Changed Phishing Detection",
@@ -67,14 +75,6 @@
       "publishedAt": "2026-06-25T21:53:11Z",
       "thumbnail": "https://i.ytimg.com/vi/XJP6IQQ9L2E/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=XJP6IQQ9L2E"
-    },
-    {
-      "id": "RmLwgPEv_Z8",
-      "title": "VPNs Aren’t Instant Privacy",
-      "description": "Most people think a VPN makes them anonymous.",
-      "publishedAt": "2026-06-25T13:38:46Z",
-      "thumbnail": "https://i.ytimg.com/vi/RmLwgPEv_Z8/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=RmLwgPEv_Z8"
     }
   ]
 }
