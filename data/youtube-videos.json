@@ -1,9 +1,17 @@
 {
-  "updatedAt": "2026-07-19T13:53:50.525Z",
+  "updatedAt": "2026-07-20T14:33:26.221Z",
   "channelId": "UCDFDIAgPq0ftCdDyT5VpHAQ",
   "channelTitle": "The 0x Feed!",
   "channelUrl": "https://www.youtube.com/channel/UCDFDIAgPq0ftCdDyT5VpHAQ",
   "videos": [
+    {
+      "id": "LWMqQmylYVc",
+      "title": "Stop Reusing Passwords",
+      "description": "Byte said 1 password everywhere is efficient.",
+      "publishedAt": "2026-07-19T23:47:46Z",
+      "thumbnail": "https://i.ytimg.com/vi/LWMqQmylYVc/maxresdefault.jpg",
+      "url": "https://www.youtube.com/watch?v=LWMqQmylYVc"
+    },
     {
       "id": "pEU5x3v41sQ",
       "title": "My Teachers Pay Teachers Explainer Video!",
@@ -67,14 +75,6 @@
       "publishedAt": "2026-06-28T15:13:58Z",
       "thumbnail": "https://i.ytimg.com/vi/L93E0WRCLo4/maxresdefault.jpg",
       "url": "https://www.youtube.com/watch?v=L93E0WRCLo4"
-    },
-    {
-      "id": "XJP6IQQ9L2E",
-      "title": "Protecting Against Public WIFI Attacks!",
-      "description": "The 0x feed is your new one stop place for all things Cybersecurity/AI news, AP cybersecurity content for students and AP Cybersecurity content for educators. We are...",
-      "publishedAt": "2026-06-25T21:53:11Z",
-      "thumbnail": "https://i.ytimg.com/vi/XJP6IQQ9L2E/maxresdefault.jpg",
-      "url": "https://www.youtube.com/watch?v=XJP6IQQ9L2E"
     }
   ]
 }
